@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trapp</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="wrapper">
+    <div id="map"></div>
+    <form method="post" id="form"> <!-- Does not seem to be calling the function -->
+        <input type="text" id="address" class="form-control" placeholder = "Enter an address..." />
+        <!--<input type="text" id="school" class="form-control" placeholder="Enter your school...">-->
+        <div id="school" class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Schools...
+                <span class="caret"></span>
+            </button>
+            <ul id="dropdown" class="dropdown-menu">
+                <!--<li><a href="#">WBHS</a></li>  WBHS doesn't work for some reason-->
+                <li><a href="#">Lanier Elementary</a></li>
+                <li><a href="#">Carpenters Middle</a></li>
+            </ul>
+        </div>
+        <input id="zoom-to-area" class="btn btn-success" type="button" value="Submit" onclick="validateInfo()"/>
+    </form>
+</div>
+
+<!-- JQuery for Bootstrap, and Boostrap just because I'm too lazy to do front-end stuff -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Script for client-side logic -->
+<script type="text/javascript" src="/scripts/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing,geocoder&key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=initMap" async defer></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "proximity",
+  "version": "1.0.0",
+  "description": "A test of the proximity search for the CodeTN",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Garrett Smith",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.6",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0"
+  }
+}
