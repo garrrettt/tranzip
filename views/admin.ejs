@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tranzip | Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles-->
+    <link href="/css/main_style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9] -->
+</head>
+
+<body>
+
+<nav class="navbar navbar-default resultsNav">
+
+    <div class="desktopNav">
+
+        <div class="col-md-3">
+            <a class="navbar-brand" href="/">
+                <img alt="Brand" src="/img/Tranzip2.png">
+            </a>
+        </div>
+
+        <div class="col-md-6">
+
+        </div><! --/row definition -->
+
+        <div class="col-md-3 flexcontainer">
+
+            <ul class="nav inlineNav">
+                <li><a href="/admin/logout" class="signOut2" >Sign Out</a></li>
+            </ul>
+
+        </div><! --/row definition -->
+
+    </div><! --/row -->
+
+</nav>
+
+<div id="busMenuState">
+    <ul>
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ADMIN / Select A Bus</h2>
+                </div>
+            </div>
+            <hr />
+
+            <div class="row text-center pad-top container-fluid antiMobileAlert">
+                <p class="alert-warning">* for optimal experience please do not view on mobile devices.</p>
+            </div>
+
+            <% for (var i=0; i < busNumbers.length; i++) { %>
+            <!--<div class="btn btn-danger" onclick="removeBus(<%= busNumbers[i] %>)">Delete Bus <%= busNumbers[i] %></div>-->
+
+            <% if (i % 6 == 0) { %>
+            <% if (i != 0) { %>
+        </div>
+        <% } %>
+
+        <div class="row text-center pad-top">
+            <% } %>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <a href="/admin/<%= school + "/" + busNumbers[i] %>" >
+                    <div class="busOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus <%= busNumbers[i] %></h4>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+        </div>
+    </ul>
+</div>
+
+<div id="busDeleteState">
+    <ul>
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ADMIN / Delete Any Bus</h2>
+                </div>
+            </div>
+            <hr />
+
+            <div class="row text-center pad-top container-fluid antiMobileAlert">
+                <p class="alert-warning">* for optimal experience please do not view on mobile devices.</p>
+            </div>
+
+            <% for (var i=0; i < busNumbers.length; i++) { %>
+            <!--<div class="btn btn-danger" onclick="removeBus(<%= busNumbers[i] %>)">Delete Bus <%= busNumbers[i] %></div>-->
+
+                <% if (i % 6 == 0) { %>
+                    <% if (i != 0) { %>
+                        </div>
+                    <% } %>
+
+                    <div class="row text-center pad-top">
+                <% } %>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <a href="#" onclick="requestDelete(<%= busNumbers[i] %>)">
+                        <div class="deleteBusOption">
+                            <i class="fa fa-bus fa-3x"></i>
+                            <h4>Bus <%= busNumbers[i] %></h4>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </ul>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirm Delete</h4>
+            </div>
+            <div class="modal-body">
+                <p>To delete the bus please type the bus number and click confirm.</p>
+            </div>
+            <div class="modal-footer flexcontainer">
+                <input id="deletionConfirmation" name="" type="text" placeholder="42" class="form-control input-md" required>
+                <button onclick="removeBus()" type="button" class="btn btn-danger">Confirm</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="addBusForm">
+
+    <div class="page-inner">
+        <ul>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Create A Bus</h2>
+                </div>
+            </div>
+            <hr />
+
+            <form class="form-horizontal">
+                <fieldset>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="">Enter Bus #</label>
+                        <div class="col-md-4">
+                            <input id="busnumber" name="" type="text" placeholder="42" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Assign Morning Schools</label>
+                        <div class="col-md-4">
+                            <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                            <div class="checkbox">
+                                <label for="morningSchool-<%= i %>">
+                                    <input class="servesAM" type="checkbox" name="morningSchool" id="morningSchool-<%= i %>" value="<%= i %>">
+                                    <%= JSON.parse(schoolsInSystem)[i] %>
+                                </label>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Assign Afternoon Schools</label>
+                        <div class="col-md-4">
+                            <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                            <div class="checkbox">
+                                <label for="afternoonSchools-<%= i %>">
+                                    <input class="servesPM" type="checkbox" name="afternoonSchools" id="afternoonSchools-<%= i %>" value="<%= i %>">
+                                    <%= JSON.parse(schoolsInSystem)[i] %>
+                                </label>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Bus Passenger Exchanges (optional)</label>
+                        <div class="col-md-4">
+                            <div class="createBusContainer">
+                                <h4>Passengers that go to: </h4>
+                                <select name="studentsGoingTo" id="">
+                                    <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                                    <option id=""><%= JSON.parse(schoolsInSystem)[i] %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="createBusContainer">
+                                <h4>Passengers will switch buses at: </h4>
+                                <select id="changeAt" name="">
+                                    <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                                    <option id=""><%= JSON.parse(schoolsInSystem)[i] %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="createBusContainer">
+                                <h4>Time of day: </h4>
+                                <select id="timeOfDay" name="">
+                                    <option>Morning</option>
+                                    <option>Afternoon</option>
+                                    <option>Morning and Afternoon</option>
+                                </select>
+                            </div>
+                            <div class="btn btn-success justifiedBtn" onclick="generateBus()">Create</div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+        </ul>
+    </div>
+
+</div>
+
+<div class="container adminPageState">
+    <div class="flexContainerRight">
+        <button id="deleteBusButton" class="btn btn-danger squareButton"><i class="fa fa-times-circle"></i> Delete
+        </button>
+        <button id="addBusButton" class="btn btn-primary squareButton"><i class="fa fa-plus-circle"></i> Add</button>
+    </div>
+</div>
+
+<script>
+    var school = "<%= school %>";
+    var bus_numbers = [<%- busNumbers %>];
+    var schoolsInSystem = <%- schoolsInSystem %>;
+</script>
+
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- admin_util is only for deleting a bus with AJAX-->
+<script src="/scripts/admin_util.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/scripts/home_animations.js"></script>
+
+</body>
+</html>

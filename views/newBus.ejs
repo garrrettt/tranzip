@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>New Bus</title>
+</head>
+<body>
+<div>
+    <label>What bus number?</label>
+    <input id="busnumber" name="busNumber" type="number" class="form-control" placeholder="Bus Number" onblur="identicalBusNumbers()">
+    <label>Which schools does it go to in the morning?</label>
+    <!--checkboxes for each school-->
+    <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+    <br><label><input class="servesAM" type="checkbox"><%= JSON.parse(schoolsInSystem)[i] %></label>
+    <% } %>
+    <br><br>
+    <label>Which schools does it go to in the afternoon?</label>
+    <!--checkboxes for each school-->
+    <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+    <br><label><input class="servesPM" type="checkbox"><%= JSON.parse(schoolsInSystem)[i] %></label>
+    <% } %>
+    <br><br>
+    <div id="changesAtAnotherSchoolWrapper">
+        <label>Does this bus switch with another one at a certain school?</label>
+        <br>
+
+        <div class="btn btn-success yesno" onclick="hideyesno(true)">Yes</div>
+        <div class="btn btn-success yesno" onclick="hideyesno(false)">No</div>
+
+        <!-- button group -->
+        <div id="changesAtAnotherSchool">
+            <div class="changesAtAnotherSchool">Students that are going to </div>
+            <select class="changesAtAnotherSchool studentsGoingTo">
+                <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                    <option><%= JSON.parse(schoolsInSystem)[i] %></option>
+                <% } %>
+            </select>
+            <div class="changesAtAnotherSchool"> should switch buses at </div>
+            <select class="changesAtAnotherSchool changeAt">
+                <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                    <option><%= JSON.parse(schoolsInSystem)[i] %></option>
+                <% } %>
+            </select>
+            <div class="changesAtAnotherSchool"> in the </div>
+            <select class="AMorPM changesAtAnotherSchool" name="AMorPM">
+                <option>morning</option>
+                <option>evening</option>
+            </select>
+            <div class="changesAtAnotherSchool" onclick="addRow()">+</div>
+        </div>
+        <br>
+    </div>
+
+    <br>
+    <button onclick="generateBus()">Submit</button>
+</div>
+
+<!--for AJAX request-->
+<script>
+    var schoolsInSystem = <%- schoolsInSystem %>;
+    var busNumbers = [<%- busNumbers %>];
+</script>
+<script src="/scripts/admin_util.js"></script>
+
+<!--for Bootstrap-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

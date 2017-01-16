@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="staticMap">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tranzip | About</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles-->
+    <link href="/css/main_style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/scripts/elevator.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#theMenu">
+
+<nav class="navbar navbar-default container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <a class="navbar-brand" href="/">
+                <i class="fa fa-arrow-circle-o-left fa-2x"></i>
+                <img alt="Brand" src="/img/Tranzip2.png">
+            </a>
+        </div>
+
+    </div><! --/row -->
+</nav>
+
+
+
+<div class="container">
+    <div class="aboutBackground">
+        <h1 class="jumboHeading">About CodeFusion</h1>
+        <div class="teamPic">
+            <img src="/img/TeamPhoto.jpg">
+        </div>
+
+
+        <p class="jumboText">CodeFusion is a team of dedicated individuals who work hard in creating web applications that are beneficial to the community.  Codefusion was created as part of the Code Tennessee competition, in which we created Tranzip, an application designed to aid local students and parents in aquiring bus numbers and routes.  Below are the hardworking members of CodeFusion and some statements about themselves:</p>
+        <div class="teamMember">
+            <img src="/img/garrettGIF.gif">
+            <div>
+                <p class="jumboText">Garrett Smith</p>
+                <p class="jumboText">I've been working with Zachary on the backend of Tranzip which includes NodeJS and MongoDB. Some things I enjoy doing are playing frisbee, playing piano, and researching psychology. </p>
+            </div>
+        </div>
+        <div class="teamMember">
+            <img src="/img/kalebzDivz.gif">
+            <div>
+                <p class="jumboText">Kaleb Davenport</p>
+                <p class="jumboText">I am a true nerd with interests in computers, human psychology, and quantum science. I love to learn, and I hope this web app helps you find your way to school! </p>
+            </div>
+        </div>
+        <div class="teamMember">
+            <img src="/img/zachary.jpg">
+            <div>
+                <p class="jumboText">Zacharý Taylor</p>
+                <p class="jumboText">Hello, my name is Zacharý Taylor. I have been working on the back end of Tranzip with Garrett. I focus on APL, D, JavaScript, and Python. I'm a huge math nerd who mainly dealt with the algorithms of Tranzip. </p>
+            </div>
+        </div>
+        <div class="teamMember">
+            <img src="/img/David.jpg">
+            <div>
+                <p class="jumboText">David Gilson</p>
+                <p class="jumboText">Coding is something that I find enjoyable.  I have been working with HTML and CSS for about a year, and I plan on learning and applying new languages to better my programming ability.</p>
+            </div>
+        </div>
+        <div class="teamMember">
+            <img src="/img/Mike.jpg">
+            <div>
+                <p class="jumboText">Mike Spalding</p>
+                <p class="jumboText">I am just a computer nerd that came across coding being in Robotics doing C++. I was in charge of doing the front end, or what the website looks like. I wanted to continue to learn different kind of coding languages so I joined a coding class my school offered. </p>
+            </div>
+        </div>
+        <div class="teamMember">
+            <img src="/img/Blair.jpg">
+            <div>
+                <p class="jumboText">Miri Blair</p>
+                <p class="jumboText">I am the sponsor for the team.  I currently teach STEM/Mathematics at William Blount High School and have a background in engineering.  I enjoy chocolate, coffee and coding.</p>
+            </div>
+        </div>
+        <div class="teamMember">
+            <img src="/img/BarryVaughn.jpg">
+            <div>
+                <p class="jumboText">Barry Vaughn</p>
+                <p class="jumboText">I've been working in the software industry for 30 years and the last 20 of those in software consulting for major corporations around the world. I currently work for Informatica specializing in Master Data Management. When I'm not working I enjoy spending time with my family of five children, 3 dogs, and working with kids in our youth group at church and a little bit of singing every now and then. </p>
+            </div>
+        </div>
+        <div class="btn-group-justified">
+            <div class="elevator-button btn btn-success squareButton">Back to Top</div>
+        </div>
+    </div><! --/row definition -->
+</div><! --/container -->
+
+
+
+<div id="footer" class="navbar-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <h6>CodeFusion &copy; 2017</h6>
+            </div>
+            <div class="col-sm-6">
+                <ul>
+                    <li><a href="/about">About CodeFusion</a></li>
+                    <li><a href="/report">Report a Problem</a></li>
+                    <li><a href="/privacy" id="last">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        var elevator = new Elevator({
+            element: document.querySelector('.elevator-button'),
+            mainAudio: '/music/elevatormusic.mp3',
+            endAudio: '/music/ding.mp3'
+        });
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/scripts/home_animations.js"></script>
+
+
+</body>
+</html>
+

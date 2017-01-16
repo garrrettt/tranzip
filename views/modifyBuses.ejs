@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tranzip | Control Panel</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles-->
+    <link href="/css/main_style.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9] -->
+</head>
+
+<body>
+
+<div id="infoModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Welcome To The Control Panel Page</h4>
+            </div>
+            <div class="modal-body">
+                <p>To add an address to the route type it into the address input and click search icon.</p>
+                <hr/>
+                <p>To edit or delete an address click on it in the map area.</p>
+            </div>
+            <div class="modal-footer flexContainerRight">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<nav class="navbar navbar-default resultsNav">
+
+    <div class="desktopNav">
+
+        <div class="col-md-3">
+            <a class="navbar-brand" href="/">
+                <img alt="Brand" src="/img/Tranzip2.png">
+            </a>
+        </div>
+
+        <div class="col-md-6">
+
+            <form class="navbar-form">
+                <div class="adminSearchFlex">
+
+                    <div id="label">
+                        <select id="dropdown" name='options'>
+                            <option class="AMorPM" value='option-1'>AM</option>
+                            <option class="AMorPM" value='option-2'>PM</option>
+                        </select>
+                    </div>
+                    <div id="adminSearchBar" class="input-group">
+                        <input type="text" id="adminSearch" class="form-control"
+                               placeholder="Enter an address to add...">
+                        <i id="submit" class="searchButton fa fa-lg fa-search"></i>
+                    </div>
+
+                </div>
+            </form>
+
+        </div><! --/row definition -->
+
+        <div class="col-md-3 flexContainerRight">
+
+            <ul class="nav inlineNav">
+                <li><a href="/admin/logout" class="signOut">Sign Out</a></li>
+                <li>
+                    <a href="#" id="busDropdown" class="dropdown-toggle">
+                        <span class="busNumber"><%= busYouAreEditing %></span><i class="fa fa-bus fa-lg"></i>
+                        <span class="caret"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div><! --/row definition -->
+
+    </div><! --/row -->
+
+</nav>
+
+<div class="busMenuDiv">
+    <ul class="busMenu">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ADMIN / Select A Bus</h2>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <hr />
+
+            <div class="row text-center pad-top container-fluid antiMobileAlert">
+                <p class="alert-warning">* this admin dashboard is not compatible with mobile devices.</p>
+            </div>
+            <!-- 6 PER ROW-->
+
+            <% for (var i=0; i < busNumbers.length; i++) { %>
+            <!--<div class="btn btn-danger" onclick="removeBus(<%= busNumbers[i] %>)">Delete Bus <%= busNumbers[i] %></div>-->
+
+                <% if (i % 6 == 0) { %>
+                    <% if (i != 0) { %>
+                        </div>
+                    <% } %>
+
+                    <div class="row text-center pad-top">
+                <% } %>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <a href="/admin/<%= school + "/" + busNumbers[i] %>" >
+                        <div class="busOption">
+                            <i class="fa fa-bus fa-3x"></i>
+                            <h4>Bus <%= busNumbers[i] %></h4>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </ul>
+</div>
+
+<div id="editsPanel">
+    <div id="edits">
+        <h4>Changes Made</h4>
+        <div class="container-fluid changesDiv">
+            <h1 id="amHeading" style="display: none;">AM</h1>
+            <div id="amChanges"></div>
+
+            <hr>
+
+            <h1 id="pmHeading" style="display: none;">PM</h1>
+            <div id="pmChanges"></div>
+        </div>
+    </div>
+    <div>
+        <button id="finalConfirmation" class="btn btn-success squareButton adminEditSave">Save Changes</button>
+    </div>
+    <div id="footer2" class="navbar-fixed-bottom hidden-xs hidden-sm">
+        <h5>CodeFusion &copy; 2016</h5>
+    </div>
+</div>
+
+<div id="googlemapsWithRoutes"></div>
+
+<div id="mobileTogglePanel" class="visible-xs visible-sm mobileOpenUpPanel">
+    <span><img id="scrollDownImg" src="/img/downArrow.svg" alt="Scroll Down"></span>
+</div>
+
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/scripts/home_animations.js"></script>
+
+<script src="/scripts/client_util.js"></script>
+<script>
+    var AMroute = <%- AMroute %>;
+    var PMroute = <%- PMroute %>;
+    var AMaddresses = <%- AMaddresses %>;
+    var PMaddresses = <%- PMaddresses %>;
+</script>
+<script src="/scripts/modifyBuses.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=initMap" async defer></script>
+
+</body>
+</html>

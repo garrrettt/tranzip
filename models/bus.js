@@ -3,14 +3,27 @@ var Schema = mongoose.Schema;
 
 var busSchema = new Schema({
   bus_number: Number,
-  serves: [String],
-  route: {
-    am: Array,
-    pm: Array
+  am: {
+    route: {
+      type: Array,
+      required: false
+    },
+    serves: [String],
+    changes_at_school: {
+      type: Array,
+      required: false
+    }
   },
-  changes_at_school: {
-    type: String,
-    default: "none"
+  pm: {
+    route: {
+      type: Array,
+      required: false
+    },
+    serves: [String],
+    changes_at_school: {
+      type: Array,
+      required: false
+    }
   }
 });
 
@@ -23,5 +36,4 @@ for (var i in busSchema.paths) {
   }
 }
 
-// export the model
-var Bus = module.exports = mongoose.model('bus', busSchema);
+module.exports = busSchema;

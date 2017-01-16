@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Tranzip</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles-->
+    <link href="/css/main_style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="googlemaps"></div>
+
+
+    <div class="login-page">
+        <div class="loginForm">
+            <form action="/admin/login" method="post" class="login-form">
+                <input name="username" type="text" placeholder="username"/>
+                <input name="password" type="password" placeholder="password"/>
+                <button>login</button>
+                <p class="message">Lost? <a href="/"> Go back to home page.</a></p>
+            </form>
+        </div>
+    </div>
+
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/scripts/home_animations.js"></script>
+<script type="text/javascript">
+    /* global google */
+    // The latitude and longitude of your business / place
+
+    var position = [35.845626, -86.390778];
+
+    var map;
+
+    function showGoogleMaps() {
+
+        var latLng = new google.maps.LatLng(position[0], position[1]);
+
+        var mapOptions = {
+            zoom: 7, // initialize zoom level - the max value is 21
+            disableDefaultUI: true, // hide plus and minus button
+            streetViewControl: false, // hide the yellow Street View pegman
+            fullscreenControl: false,
+            mapTypeControl: false,
+            scrollwheel: false,
+            draggable: false,
+            disableDoubleClickZoom: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: latLng,
+            styles: [
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "hue": "#FFAD00"
+                        },
+                        {
+                            "saturation": 50.2
+                        },
+                        {
+                            "lightness": -34.8
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "hue": "#FFC300"
+                        },
+                        {
+                            "saturation": 54.2
+                        },
+                        {
+                            "lightness": -14.4
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "hue": "#ffad00"
+                        },
+                        {
+                            "saturation": -19.8
+                        },
+                        {
+                            "lightness": -1.8
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "hue": "#FFAD00"
+                        },
+                        {
+                            "saturation": 72.4
+                        },
+                        {
+                            "lightness": -32.6
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "hue": "#FFAD00"
+                        },
+                        {
+                            "saturation": 74.4
+                        },
+                        {
+                            "lightness": -18
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "hue": "#00FFA6"
+                        },
+                        {
+                            "saturation": -63.2
+                        },
+                        {
+                            "lightness": 38
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                }
+            ]
+        };
+
+        map = new google.maps.Map(document.getElementById('googlemaps'),
+                mapOptions);
+    }
+
+    google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=showGoogleMaps">
+</script>
+
+</body>
+</html>
+
+<!-- This document contains selected pieces from the following page -->
+<!--
+Copyright (c) 2017 by Aigars Silkalns (http://codepen.io/colorlib/pen/rxddKy)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->

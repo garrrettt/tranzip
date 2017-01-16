@@ -1,38 +1,181 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Trapp</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tranzip</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles-->
+    <link href="/css/main_style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9] -->
 </head>
-<body>
-<div id="wrapper">
-    <div id="map"></div>
-    <div method="post" id="form"> <!-- Does not seem to be calling the function -->
-        <input type="text" id="address" class="form-control" placeholder = "Enter an address..." />
-        <!--<input type="text" id="school" class="form-control" placeholder="Enter your school...">-->
-        <div id="school" class="btn-group" role="group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Schools...
-                <span class="caret"></span>
-            </button>
-            <ul id="dropdown" class="dropdown-menu">
-                <!--<li><a href="#">WBHS</a></li>  WBHS doesn't work for some reason-->
-                <li><a href="#">Lanier Elementary</a></li>
-                <li><a href="#">Carpenters Middle</a></li>
-            </ul>
+
+<body data-spy="scroll" data-offset="0" data-target="#theMenu">
+
+<!-- We want to always preserve the same map that was originally loaded-->
+<div id="googlemaps"></div>
+
+
+<div id="wrapsEverything">
+    <nav class="navbar navbar-default container-fluid">
+
+        <div class="flexcontainer">
+
+            <div class="">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="./img/Tranzip2.png">
+                </a>
+            </div>
+
+            <div class="flexRight">
+
+                <% if (!loggedIn) { %>
+                    <ul class="nav inlineNav">
+                        <li><a href="/admin" class="signIn">Admin</a></li>
+                    </ul>
+                <% } else { %>
+                    <ul class="nav inlineNav">
+                        <li><a href="/admin/logout" class="signIn">Sign Out</a></li>
+                    </ul>
+                <% } %>
+
+            </div><! --/row definition -->
+
+        </div><! --/row -->
+    </nav>
+
+    <!-- Menu -->
+
+    <div id="element">
+        <div id="headerwrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <div class="jumboBackground">
+
+                            <h1 class="jumboHeading">Welcome to Tranzip.</h1>
+
+                            <img src="img/Bus1.png">
+
+                            <p class="jumboText">Here you can search what bus you or your child rides based on your
+                                address, zip code, and school. Find out more about how this was made <a href="/about">here</a>
+                            </p>
+
+                            <div class="container-fluid">
+                                <form class="form" id="form" role="search">
+                                    <div id="search_bar" class="input-group">
+                                        <input type="text" id="search" class="form-control" aria-label="Type your address" placeholder="Type in your address here...">
+                                        <i id="search_button" class="searchButton fa fa-lg fa-search"></i>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div><! --/row definition -->
+                </div><! --/row -->
+            </div><! --/container -->
+        </div><! --/headerwrap -->
+    </div>
+
+
+    <div id="footer" class="hidden-xs navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6>CodeFusion &copy; 2017</h6>
+                </div>
+                <div class="col-sm-6">
+                    <ul>
+                        <li><a href="/about">About CodeFusion</a></li>
+                        <li><a href="/report">Report a Problem</a></li>
+                        <li><a href="/privacy" id="last">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
         </div>
-        <input id="zoom-to-area" class="btn btn-success" type="button" value="Submit" onclick="validateInfo()"/>
     </div>
 </div>
 
-<!-- JQuery for Bootstrap, and Boostrap just because I'm too lazy to do front-end stuff -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog wideModal" role="document">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="changingHeading"><h4 class="modal-title">Which school do you go to?</h4></div>
+            </div>
+            <div class="container modal-body">
+                <div class="container" id="innerContent">
+
+                    <% for (var i=0; i < schoolsInSystem.length; i++) { %>
+                    <a onclick="requestRoute('<%= schoolsInSystem[i].name %>')">
+                        <div class="panel-default">
+                            <div class="panel-heading school-submit">
+                                <i class="fa
+                                <% if (schoolsInSystem[i].grade_range == 'elementary') { %>
+                                fa-pencil
+                                <% } else if (schoolsInSystem[i].grade_range == 'middle') { %>
+                                fa-book
+                                <% } else if (schoolsInSystem[i].grade_range == 'high') { %>
+                                fa-graduation-cap
+                                <% }%>
+                                marginRight" aria-hidden="true"></i>
+
+                                <%= schoolsInSystem[i].name %>
+
+                                <i class="fa fa-arrow-circle-right pullRight" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <% } %>
+
+                </div><! --/container -->
+            </div>
+            <nav class="navbar-fixed-bottom">
+                <div class="loading container">
+                    <img class="loader" src="img/default.svg">
+                </div>
+            </nav>
+
+
+        </div><! --/modal content -->
+    </div><! --/modal dialogue -->
+</div><! --/modal -->
+
+<script>
+    <% if (message.length > 0) { %>
+    alert('<%= message %>')
+    <% } %>
+</script>
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Bootstrap-->
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Animations -->
+<script src="/scripts/home_animations.js"></script>
 
 <!-- Script for client-side logic -->
+<script type="text/javascript" src="/scripts/client_util.js"></script>
 <script type="text/javascript" src="/scripts/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing,geocoder&key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geocoder&key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=initMap" async defer></script>
+
 </body>
 </html>

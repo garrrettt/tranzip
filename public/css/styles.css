@@ -1,36 +1,34 @@
-html, body {
-    height: 100%;
+
+
+#infowindowContainer {
+    display: inline;
+}
+
+#newAddress {
+    display: none;
+}
+
+#back {
+    display: none;
+}
+
+#confirmationForm {
+    display: none;
+}
+
+.changesAtAnotherSchool {
+    display: none;
+}
+
+.howmany {
+    display: none;
+}
+
+#edit {
     width: 100%;
-    margin: 0px;
-    padding: 0px;
 }
-#map {
-    height: 100%;
-    width: 100%;
-    position: absolute;
+
+#delete {
+    width: 100%
 }
-#wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-#address {
-    position: absolute;
-    top: 10px;
-    left: 35%;
-    z-index: 99;
-    width: 25%;
-}
-#school {
-    position: absolute;
-    top: 50px;
-    left: 35%;
-    z-index: 99;
-    width: 25%;
-}
-#zoom-to-area {
-    position: absolute;
-    top: 10px;
-    left: 61%;
-    z-index: 99;
-}
+

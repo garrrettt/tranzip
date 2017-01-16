@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var Bus = require('../models/bus');
+var busSchema = require('../models/bus');
+var mongoose = require('mongoose');
 
-router.get('/bus/:number', function(req, res) {
+
+router.get(':school/bus/:number', function(req, res) {
+  // search specifically for the school provided
+  var Bus = mongoose.model(req.params.school+"_buses", busSchema, req.params.school+"_buses");
+
   Bus.find({bus_number: req.params.number}, function(err, bus) {
     if (err) throw err;
 
@@ -15,6 +20,9 @@ router.get('/bus/:number', function(req, res) {
 });
 
 router.get('/bus/:number/route', function(req, res) {
+  // search specifically for the school provided
+  var Bus = mongoose.model(req.params.school+"_buses", busSchema, req.params.school+"_buses");
+
   Bus.find({bus_number: req.params.number}, function(err, bus) {
     if (err) throw err;
 

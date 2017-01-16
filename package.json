@@ -1,20 +1,29 @@
 {
-  "name": "proximity",
+  "name": "Tranzip",
   "version": "1.0.0",
   "description": "A test of the proximity search for the CodeTN",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "start": "nodemon app"
   },
   "author": "Garrett Smith",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "mongodb": "^2.2.11",
     "mongoose": "^4.6.6",
     "morgan": "^1.7.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.3.2",
+    "supertest": "^2.0.1"
   }
 }

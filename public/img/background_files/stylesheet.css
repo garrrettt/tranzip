@@ -1,0 +1,162 @@
+.school {
+    height: 20%;                         /*When in doubt, put auto, DON'T cause a syntax error.*/
+    width: 50%;
+    min-width: 500px;                        /* Been Commented out */
+    border: 6px solid #ff944d;
+    border-radius: 10px;            /* The drop down menu for the schools on home.html */
+    margin: auto;
+    margin-top: 90px;
+    margin-bottom: 5%;
+    background: linear-gradient(90deg, white, gray);
+}
+
+.search {
+    height :20%;
+    width: 30%;                    /* The search with the typing in the address on home.html */
+    border: 6px solid #ff944d;
+    background-color: white;
+    border-radius: 10px;
+    margin: auto;
+    z-index: 0;
+    background:-webkit-gradient(linear, 0 100%, 0 0, from(white), to(gray));
+    background:-webkit-linear-gradient(90deg, white, gray);
+    background:-moz-linear-gradient(90deg, white, gray);
+    background:-o-linear-gradient(90deg, white, gray);
+    background:WW linear-gradient(90deg, white, gray);
+}                        
+
+/*body  {*/
+/*    background-image: url("Background.png");*/
+/*    background-size: 100%;*/
+    /*background-repeat: no-repeat;*/
+/*    height: 100%;*/
+/*}*/
+
+#googlemaps {                    /* Not being used */
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;                         /* Set z-index to 0 as it will be on a layer below the contact form */
+}
+
+#Result {
+    width: 70%;
+    height: 40em;                /* Not being used */
+    max-height: 700px;
+    border: 7px solid green;
+    margin: auto;
+    margin-top: -2%;
+    border-radius: 50px;
+    z-index: 1;
+}
+
+#info {
+    width: 100%;
+    height: 35.5%;
+    vertical-align: top;            /* Holds the data on Results page */
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background: linear-gradient(30deg, white, green);
+}
+
+#Map {
+    width: 100%;
+    height: 65%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+#Address {
+        width: 300px;            /* Been Commented out */
+        margin-left: 6%;
+        margin-top: 20px;
+        height: 175px;
+        display: inline-block;
+        border: 3px solid green;
+        border-radius: 30px;
+        background: linear-gradient(90deg, white, gray);
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;                /* The Whole Box for the Login */
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background: linear-gradient(90deg, white, gray);
+    border-radius: 20px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 22px;        /* The close, X */
+    text-decoration: none;
+    font-size: 25px;
+    color: blue;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: yellow;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    left: -5px;
+    font-size: 36px;
+    margin-right: 40px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.opac {
+    background-color: white;
+    width: 100%;            /* Not being used */
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+p {
+    font-size: 25px;
+    font-family: inherit;
+    margin-top: 1%;
+    margin-bottom: -5%;
+}
+b {
+    float: right;
+    margin: 0% 10% 0% 0%;
+    font-size: 40px;
+}
+
+#Bus {                       /* The Bus # on results page */
+    font-size: 30px;
+    font-family: impact;
+    display: inline-block;
+    position: absolute;
+    margin-left: 50.5%;
+    margin-top: 11%;
+}
+
+#BusNumber {
+    width: 10%;
+    height: 6%;                    /* The Bus Number Data on Results page */
+    background-color: white;
+    border: 3px solid green;
+    border-radius: 20px;
+    margin-top: 7%;
+    margin-left: 15%;
+    position: absolute;
+    display: inline-block;
+}
