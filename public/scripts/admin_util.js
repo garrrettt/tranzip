@@ -62,13 +62,13 @@ function generateBus() {
             alert("Sorry, it looks like there's an error! That's all we know!");
             console.log(xhr.responseText)
           } else {
-            // window.location = window.location.href;
+            window.location = window.location.href;
             console.log(xhr.responseText);
           }
         }
       };
 
-      xhr.open('POST', window.location.pathname + 'newbus', true);
+      xhr.open('POST', window.location.pathname + '/newbus', true);
       xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8'); // parse as json on server-side
       // since express will parse the request by default, we have to stringify it
       xhr.send(JSON.stringify(bus));

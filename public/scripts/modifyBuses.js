@@ -165,28 +165,28 @@ function initMap() {
   }
 
   // Address autocomplete
-  var autoComplete = new google.maps.places.Autocomplete(
-    document.getElementById('adminSearch')
-  );
+  // var autoComplete = new google.maps.places.Autocomplete(
+  //   document.getElementById('adminSearch')
+  // );
 
   // if they used the auto-completion (precise), then don't limit them to Blount county
   var hasUsedAutoComplete = false;
 
-  google.maps.event.addListener(autoComplete, 'place_changed', function() {
-    hasUsedAutoComplete = true;
-  });
+  // google.maps.event.addListener(autoComplete, 'place_changed', function() {
+  //   hasUsedAutoComplete = true;
+  // });
 
-  document.getElementById('submit').addEventListener('click', function() {
-
-    // get value of selector
-    var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;console.log(hasUsedAutoComplete)
-
-    if (addAMorPM == "AM") validateInfoAndAddMarker(addAMorPM, AMdirectionsRenderers, amWaypoints, AMdirectionsRenderersMarkers, hasUsedAutoComplete);
-    if (addAMorPM == "PM") validateInfoAndAddMarker(addAMorPM, PMdirectionsRenderers, pmWaypoints, PMdirectionsRenderersMarkers, hasUsedAutoComplete);
-
-    // set search restriction to Blount County again until they search another time
-    hasUsedAutoComplete = false;
-  });
+  // document.getElementById('submit').addEventListener('click', function() {
+  //
+  //   // get value of selector
+  //   var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+  //
+  //   if (addAMorPM == "AM") validateInfoAndAddMarker(addAMorPM, AMdirectionsRenderers, amWaypoints, AMdirectionsRenderersMarkers, hasUsedAutoComplete);
+  //   if (addAMorPM == "PM") validateInfoAndAddMarker(addAMorPM, PMdirectionsRenderers, pmWaypoints, PMdirectionsRenderersMarkers, hasUsedAutoComplete);
+  //
+  //   // set search restriction to Blount County again until they search another time
+  //   hasUsedAutoComplete = false;
+  // });
 
   // if any markers exist, zooms in to fit all the markers
   if (AMroute.length != 0 || PMroute.length != 0) {
@@ -636,9 +636,37 @@ var ELEMENT_OF_TEXT_BOX = document.getElementById("ELEMENT_OF_TEXT_BOX");
 //   if (AM_SELECTOR_IS_SELECTED) {
 //     console.log(findMostSimilarStringInArray(ELEMENT_OF_TEXT_BOX.value, PMaddresses));
 //   } else if (PM_SELECTOR_IS_SELECTED) {
-//     console.log(findMostSimilarStringInArray(ELEMENT_OF_TEXT_BOX.value, PMaddresses));
+//     console.log(findMostSimilarStringInArray(ELEMENT_OF_TEXT_BOX.value, AMaddresses));
 //   }
 // });
+
+document.getElementById('submit').addEventListener('click', function() {
+
+  // get value of selector
+  var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+
+  // get address
+  var address = document.getElementById('adminSearch').value;
+
+  if (addAMorPM == "AM") {
+    var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
+
+    console.log(threeMostSimilarAddresses);
+
+    for (var i=0; i < AMdirectionsRenderersMarkers.length; i++) {
+      for (var j=0; j < AMdirectionsRenderersMarkers[i].length; j++) {
+        if (AMdirectionsRenderersMarkers[i][j].address == threeMostSimilarAddresses[0]) {
+          google.maps.event.trigger(AMdirectionsRenderersMarkers[i][j], 'click');
+
+          break;
+        }
+      }
+    }
+  } else if (addAMorPM == "PM") {
+    var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
+  }
+
+});
 
 function findMostSimilarStringInArray(string, array) {
 
@@ -649,10 +677,10 @@ function findMostSimilarStringInArray(string, array) {
     distancesFromSource.push(levDist(array[i], string));
   }
 
-// make a copy of distancesFromSource that we can cut out of
+  // make a copy of distancesFromSource that we can cut out of
   var distancesFromSourceWithoutNextClosest = distancesFromSource.slice(0);
 
-// find the 3 closest editing distances
+  // find the 3 closest editing distances
   for (var i=0; i < 3; i++) {
 
     // we do not want to search through the old values, so we use the array without the closest ones

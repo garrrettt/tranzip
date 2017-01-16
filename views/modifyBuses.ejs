@@ -15,6 +15,7 @@
     <!-- Custom styles-->
     <link href="/css/main_style.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -161,6 +162,7 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/scripts/home_animations.js"></script>
@@ -171,6 +173,12 @@
     var PMroute = <%- PMroute %>;
     var AMaddresses = <%- AMaddresses %>;
     var PMaddresses = <%- PMaddresses %>;
+
+    var AMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+
+    $( "#adminSearch" ).autocomplete({
+        source: AMorPM == "AM" ? AMaddresses : PMaddresses
+    });
 </script>
 <script src="/scripts/modifyBuses.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=initMap" async defer></script>
