@@ -1,4 +1,6 @@
-# Tranzip Beta (name was changed during creation of project)
+# Tranzip Pre-alpha
+
+Tranzip will move to the Blount County School System after alpha is reached (very soon). Then, after the beta release, we will move to one or two more school systems. After the final release, we will try to max out our Google Maps API free plan and see where we go from there.
 
 # To run on Cloud9
 
