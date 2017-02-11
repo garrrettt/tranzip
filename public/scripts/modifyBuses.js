@@ -165,28 +165,28 @@ function initMap() {
   }
 
   // Address autocomplete
-  // var autoComplete = new google.maps.places.Autocomplete(
-  //   document.getElementById('adminSearch')
-  // );
+  var autoComplete = new google.maps.places.Autocomplete(
+    document.getElementById('adminSearch')
+  );
 
   // if they used the auto-completion (precise), then don't limit them to Blount county
   var hasUsedAutoComplete = false;
 
-  // google.maps.event.addListener(autoComplete, 'place_changed', function() {
-  //   hasUsedAutoComplete = true;
-  // });
+  google.maps.event.addListener(autoComplete, 'place_changed', function() {
+    hasUsedAutoComplete = true;
+  });
 
-  // document.getElementById('submit').addEventListener('click', function() {
-  //
-  //   // get value of selector
-  //   var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
-  //
-  //   if (addAMorPM == "AM") validateInfoAndAddMarker(addAMorPM, AMdirectionsRenderers, amWaypoints, AMdirectionsRenderersMarkers, hasUsedAutoComplete);
-  //   if (addAMorPM == "PM") validateInfoAndAddMarker(addAMorPM, PMdirectionsRenderers, pmWaypoints, PMdirectionsRenderersMarkers, hasUsedAutoComplete);
-  //
-  //   // set search restriction to Blount County again until they search another time
-  //   hasUsedAutoComplete = false;
-  // });
+  document.getElementById('submit').addEventListener('click', function() {
+
+    // get value of selector
+    var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+
+    if (addAMorPM == "AM") validateInfoAndAddMarker(addAMorPM, AMdirectionsRenderers, amWaypoints, AMdirectionsRenderersMarkers, hasUsedAutoComplete);
+    if (addAMorPM == "PM") validateInfoAndAddMarker(addAMorPM, PMdirectionsRenderers, pmWaypoints, PMdirectionsRenderersMarkers, hasUsedAutoComplete);
+
+    // set search restriction to Blount County again until they search another time
+    hasUsedAutoComplete = false;
+  });
 
   // if any markers exist, zooms in to fit all the markers
   if (AMroute.length != 0 || PMroute.length != 0) {
@@ -630,43 +630,34 @@ function validateInfoAndAddMarker(AMorPM, directionsRenderer, associatedWaypoint
   }
 }
 
-var ELEMENT_OF_TEXT_BOX = document.getElementById("ELEMENT_OF_TEXT_BOX");
-
-// document.getElementById("ELEMENT_OF_TEXT_BOX").addEventListener('onkeypress', function() {
-//   if (AM_SELECTOR_IS_SELECTED) {
-//     console.log(findMostSimilarStringInArray(ELEMENT_OF_TEXT_BOX.value, PMaddresses));
-//   } else if (PM_SELECTOR_IS_SELECTED) {
-//     console.log(findMostSimilarStringInArray(ELEMENT_OF_TEXT_BOX.value, AMaddresses));
+// Editing suggestions
+// document.getElementById('submit').addEventListener('click', function() {
+//
+//   // get value of selector
+//   var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+//
+//   // get address
+//   var address = document.getElementById('adminSearch').value;
+//
+//   if (addAMorPM == "AM") {
+//     var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
+//
+//     console.log(threeMostSimilarAddresses);
+//
+//     for (var i=0; i < AMdirectionsRenderersMarkers.length; i++) {
+//       for (var j=0; j < AMdirectionsRenderersMarkers[i].length; j++) {
+//         if (AMdirectionsRenderersMarkers[i][j].address == threeMostSimilarAddresses[0]) {
+//           google.maps.event.trigger(AMdirectionsRenderersMarkers[i][j], 'click');
+//
+//           break;
+//         }
+//       }
+//     }
+//   } else if (addAMorPM == "PM") {
+//     var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
 //   }
+//
 // });
-
-document.getElementById('submit').addEventListener('click', function() {
-
-  // get value of selector
-  var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
-
-  // get address
-  var address = document.getElementById('adminSearch').value;
-
-  if (addAMorPM == "AM") {
-    var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
-
-    console.log(threeMostSimilarAddresses);
-
-    for (var i=0; i < AMdirectionsRenderersMarkers.length; i++) {
-      for (var j=0; j < AMdirectionsRenderersMarkers[i].length; j++) {
-        if (AMdirectionsRenderersMarkers[i][j].address == threeMostSimilarAddresses[0]) {
-          google.maps.event.trigger(AMdirectionsRenderersMarkers[i][j], 'click');
-
-          break;
-        }
-      }
-    }
-  } else if (addAMorPM == "PM") {
-    var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
-  }
-
-});
 
 function findMostSimilarStringInArray(string, array) {
 
@@ -768,10 +759,10 @@ function addToChangesSideBar(AMorPM, typeofChange, address) {
   uniqueSideBarId += 1;
 
   // the first time they make a change, we'll pop up the nifty little AM/PM headers
-  if (AMorPM == "AM" && amHeading == "none") {
-    document.getElementById('amHeading').style.display = "visible";
-  } else if (AMorPM == "PM" && pmHeading == "none") {
-    document.getElementById('pmHeading').style.display = "visible";
+  if (AMorPM == "AM") {
+    document.getElementById('amHeading').style.display = "inline";
+  } else if (AMorPM == "PM") {
+    document.getElementById('pmHeading').style.display = "inline";
   }
 
   var sideBar;

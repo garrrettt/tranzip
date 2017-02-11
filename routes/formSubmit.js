@@ -36,9 +36,15 @@ router.post('/', function(req, res) {
 
   Bus.find({'pm.serves': school}, function(err, buses) {
     if (err) {
-      PMready = true;
-    } else if (buses.length == 0) {
-      PMready = true;
+      res.send({
+        am_bus_found: false,
+        pm_bus_found: false
+      });
+    } else if (buses.length == 0 || buses[0].length == 0) {
+      res.send({
+        am_bus_found: false,
+        pm_bus_found: false
+      });
     } else {
       // looks like we found something, so...
       pmBusFound = true;
