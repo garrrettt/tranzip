@@ -9,15 +9,23 @@ router.get('/', function(req, res) {
 
   // for now defaults to Blount County Schools
   SchoolSystem.find({ school_system_code: 'bcs' }, {_id: 0, __v: 0}, function(err, schoolSystem) {
-    for (var i=0; i < schoolSystem[0].schools.length; i++) {
-      schoolsInSystem.push(schoolSystem[0].schools[i]); // includes name and grade range (i.e. 'elementary')
-    }
+    if (schoolSystem.length > 0) {
+      for (var i=0; i < schoolSystem[0].schools.length; i++) {
+        schoolsInSystem.push(schoolSystem[0].schools[i]); // includes name and grade range (i.e. 'elementary')
+      }
 
-    res.render('index', {
-      schoolsInSystem: schoolsInSystem,
-      message: req.flash(req.session['success']), // if we have a confirmation message, send it
-      loggedIn: req.isAuthenticated()
-    });
+      res.render('index', {
+        schoolsInSystem: schoolsInSystem,
+        message: req.flash(req.session['success']), // if we have a confirmation message, send it
+        loggedIn: req.isAuthenticated()
+      });
+    } else {
+      res.render('index', {
+        schoolsInSystem: [],
+        message: req.flash(req.session['success']), // if we have a confirmation message, send it
+        loggedIn: req.isAuthenticated()
+      });
+    }
   });
 });
 

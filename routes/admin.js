@@ -48,24 +48,40 @@ module.exports = function(passport) {
     var schoolsInSystem = [];
 
     SchoolSystem.find({}, {_id: 0}, function (err, schoolSystem) {
-      for (var i = 0; i < schoolSystem[0].schools.length; i++) {
-        schoolsInSystem.push(schoolSystem[0].schools[i].name);
-      }
-
-      var Bus = mongoose.model(req.params.school + "_buses", busSchema, req.params.school + "_buses"); // third parameter makes sure mongodb doesn't pluralize the model name
-
-      // get all bus numbers, and package them into admin.ejs
-      Bus.find({}, {"bus_number": 1, _id: 0}, function (err, buses) {
-        for (var i = 0; i < buses.length; i++) {
-          busNumbers.push(buses[i].bus_number);
+      if (schoolSystem.length > 0) {
+        for (var i = 0; i < schoolSystem[0].schools.length; i++) {
+          schoolsInSystem.push(schoolSystem[0].schools[i].name);
         }
-        console.log(JSON.stringify(schoolsInSystem))
-        res.render('admin', {
-          busNumbers: busNumbers,
-          school: req.params.school,
-          schoolsInSystem: JSON.stringify(schoolsInSystem)
+
+        var Bus = mongoose.model(req.params.school + "_buses", busSchema, req.params.school + "_buses"); // third parameter makes sure mongodb doesn't pluralize the model name
+
+        // get all bus numbers, and package them into admin.ejs
+        Bus.find({}, {"bus_number": 1, _id: 0}, function (err, buses) {
+          if (buses.length > 1) {
+            for (var i = 0; i < buses.length; i++) {
+              busNumbers.push(buses[i].bus_number);
+            }
+            console.log(JSON.stringify(schoolsInSystem));
+            res.render('admin', {
+              busNumbers: busNumbers,
+              school: req.params.school,
+              schoolsInSystem: JSON.stringify(schoolsInSystem)
+            });
+          } else {
+            res.render('admin', {
+              busNumbers: [],
+              school: req.params.school,
+              schoolsInSystem: JSON.stringify(schoolsInSystem)
+            });
+          }
         });
-      });
+      } else {
+        res.render('admin', {
+          busNumbers: [],
+          school: req.params.school,
+          schoolsInSystem: []
+        });
+      }
     });
   });
 
