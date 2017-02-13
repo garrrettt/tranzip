@@ -833,4 +833,266 @@ var newBus = new Bus({
       }
     ]
   }
-})
+});
+
+newBus.save(function(err, data){
+  if (err) console.log(err);
+  else console.log(data);
+});
+
+var newBus = new Bus({
+  "bus_number":38,
+  "pm":{
+    "changes_at_school":[
+
+    ],
+    "serves":[
+      "William Blount High School",
+      "Union Grove Middle",
+      "Friendsville Elementary"
+    ],
+    "route":[
+      {
+        "address":"607 N Union Grove Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.08883,
+          "lat":35.757147
+        }
+      },
+      {
+        "address":"858 Alley Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.081019,
+          "lat":35.76544
+        }
+      },
+      {
+        "address":"3014 Miser School Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.080816,
+          "lat":35.773058
+        }
+      },
+      {
+        "address":"3160 Miser School Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.088824,
+          "lat":35.776374
+        }
+      },
+      {
+        "address":"3845 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.072835,
+          "lat":35.783014
+        }
+      },
+      {
+        "address":"3706 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.066951,
+          "lat":35.787673
+        }
+      },
+      {
+        "address":"3851 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.073127,
+          "lat":35.782785
+        }
+      },
+      {
+        "address":"1065 N Union Grove Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.076214,
+          "lat":35.774679
+        }
+      },
+      {
+        "address":"3952 Freels Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.07311,
+          "lat":35.775531
+        }
+      },
+      {
+        "address":"2540 Whisper Creek Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.067106,
+          "lat":35.780034
+        }
+      },
+      {
+        "address":"3818 Freels Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.064987,
+          "lat":35.775772
+        }
+      },
+      {
+        "address":"4209 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.091418,
+          "lat":35.778858
+        }
+      },
+      {
+        "address":"367 Cedar Crest Ln, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.130663,
+          "lat":35.773458
+        }
+      },
+      {
+        "address":"235 Cedar Crest Ln, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.138385,
+          "lat":35.77291
+        }
+      },
+      {
+        "address":"109 Cedar Crest Ln, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.132819,
+          "lat":35.768463
+        }
+      },
+      {
+        "address":"301 Miser Station Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.11576,
+          "lat":35.780202
+        }
+      }
+    ]
+  },
+  "am":{
+    "changes_at_school":[
+
+    ],
+    "serves":[
+      "William Blount High School",
+      "Union Grove Middle",
+      "Friendsville Elementary"
+    ],
+    "route":[
+      {
+        "address":"607 N Union Grove Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.08883,
+          "lat":35.757147
+        }
+      },
+      {
+        "address":"858 Alley Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.081019,
+          "lat":35.76544
+        }
+      },
+      {
+        "address":"3014 Miser School Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.080816,
+          "lat":35.773058
+        }
+      },
+      {
+        "address":"3160 Miser School Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.088824,
+          "lat":35.776374
+        }
+      },
+      {
+        "address":"3845 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.072835,
+          "lat":35.783014
+        }
+      },
+      {
+        "address":"3706 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.066951,
+          "lat":35.787673
+        }
+      },
+      {
+        "address":"3851 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.073127,
+          "lat":35.782785
+        }
+      },
+      {
+        "address":"1065 N Union Grove Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.076214,
+          "lat":35.774679
+        }
+      },
+      {
+        "address":"3952 Freels Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.07311,
+          "lat":35.775531
+        }
+      },
+      {
+        "address":"2540 Whisper Creek Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.067106,
+          "lat":35.780034
+        }
+      },
+      {
+        "address":"3818 Freels Rd, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.064987,
+          "lat":35.775772
+        }
+      },
+      {
+        "address":"4209 Miser Station Rd, Louisville, TN, United States",
+        "coords":{
+          "lng":-84.091418,
+          "lat":35.778858
+        }
+      },
+      {
+        "address":"367 Cedar Crest Ln, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.130663,
+          "lat":35.773458
+        }
+      },
+      {
+        "address":"235 Cedar Crest Ln, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.138385,
+          "lat":35.77291
+        }
+      },
+      {
+        "address":"109 Cedar Crest Ln, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.132819,
+          "lat":35.768463
+        }
+      },
+      {
+        "address":"301 Miser Station Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.11576,
+          "lat":35.780202
+        }
+      }
+    ]
+  }
+});
+
+newBus.save(function(err, data){
+  if (err) console.log(err);
+  else console.log(data);
+});
