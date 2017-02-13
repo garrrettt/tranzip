@@ -1,4 +1,28 @@
 // schoolsInSystem and school are variables stored in the ejs since they are passed in from the server
+
+var busSwitchesAtASchool = false;
+
+function busDoesSwitchAtASchool() {
+  busSwitchesAtASchool = true;
+
+  var selection = document.getElementById('selectWhatSchoolsBusSwitchesAt');
+
+  selection.style.display = "inline";
+
+  hideyesno()
+}
+
+function resetAddBusForm() {
+  busSwitchesAtASchool = false;
+
+  var selection = document.getElementById('selectWhatSchoolsBusSwitchesAt');
+  selection.style.display = "none";
+
+  var yesorno = document.getElementById('busSwitchesAtASchool');
+
+  yesorno.style.display = "inline";
+}
+
 function identicalBusNumbers() {
   return bus_numbers.indexOf(parseInt(document.getElementById('busnumber').value)) > -1
 }
@@ -33,20 +57,22 @@ function generateBus() {
       }
     }
 
-    var studentsGoingTo = document.getElementById('studentsGoingTo').options[document.getElementById('studentsGoingTo').selectedIndex].text;
-    var changeAt = document.getElementById('changeAt').options[document.getElementById('changeAt').selectedIndex].text;
-    var timeOfDay = document.getElementById('timeOfDay').options[document.getElementById('timeOfDay').selectedIndex].text;
+    if (busSwitchesAtASchool) {
+      var studentsGoingTo = document.getElementById('studentsGoingTo').options[document.getElementById('studentsGoingTo').selectedIndex].text;
+      var changeAt = document.getElementById('changeAt').options[document.getElementById('changeAt').selectedIndex].text;
+      var timeOfDay = document.getElementById('timeOfDay').options[document.getElementById('timeOfDay').selectedIndex].text;
 
-    if (timeOfDay == 'Morning') {
-      bus.am.changes_at_school.push({
-        students_going_to: studentsGoingTo,
-        change_at: changeAt
-      });
-    } else if (timeOfDay == 'Afternoon') {
-      bus.pm.changes_at_school.push({
-        students_going_to: studentsGoingTo,
-        change_at: changeAt
-      })
+      if (timeOfDay == 'Morning') {
+        bus.am.changes_at_school.push({
+          students_going_to: studentsGoingTo,
+          change_at: changeAt
+        });
+      } else if (timeOfDay == 'Afternoon') {
+        bus.pm.changes_at_school.push({
+          students_going_to: studentsGoingTo,
+          change_at: changeAt
+        })
+      }
     }
 
     console.log(bus);
@@ -78,20 +104,10 @@ function generateBus() {
   }
 }
 
-function hideyesno(yes) {
-  var yesorno = document.getElementsByClassName('yesno');
+function hideyesno() {
+  var yesorno = document.getElementById('busSwitchesAtASchool');
 
-  for (var i = 0; i < yesorno.length; i++) {
-    yesorno[i].style.display = "none";
-  }
-
-  if (yes) {
-    var changesAtAnotherSchool = document.getElementsByClassName('changesAtAnotherSchool');
-
-    for (var i = 0; i < changesAtAnotherSchool.length; i++) {
-      changesAtAnotherSchool[i].style.display = "inline-block";
-    }
-  }
+  yesorno.style.display = "none";
 }
 
 function addRow() {

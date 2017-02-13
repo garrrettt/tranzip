@@ -195,8 +195,16 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Bus Passenger Exchanges (optional)</label>
+                    <div class="form-group" id="busSwitchesAtASchool">
+                        <label class="col-md-4 control-label" for="">Does the bus switch at a certain school?</label>
+                        <div class="col-md-4">
+                            <div class="btn btn-success" onclick="busDoesSwitchAtASchool()">Yes</div>
+                            <div class="btn btn-success" onclick="hideyesno()">No</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display: none" id="selectWhatSchoolsBusSwitchesAt">
+                        <label class="col-md-4 control-label">Bus Passenger Exchanges</label>
                         <div class="col-md-4">
                             <div class="createBusContainer">
                                 <h4>Passengers that go to: </h4>
@@ -222,9 +230,16 @@
                                     <option>Morning and Afternoon</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="busSwitchesAtASchool">
+                        <label class="col-md-4 control-label" for=""></label>
+                        <div class="col-md-4">
                             <div class="btn btn-success justifiedBtn" onclick="generateBus()">Create</div>
                         </div>
                     </div>
+
 
                 </fieldset>
             </form>
@@ -238,7 +253,7 @@
     <div class="flexContainerRight">
         <button id="deleteBusButton" class="btn btn-danger squareButton"><i class="fa fa-times-circle"></i> Delete
         </button>
-        <button id="addBusButton" class="btn btn-primary squareButton"><i class="fa fa-plus-circle"></i> Add</button>
+        <button id="addBusButton" class="btn btn-primary squareButton" onclick="resetAddBusForm()"><i class="fa fa-plus-circle"></i> Add</button>
     </div>
 </div>
 
