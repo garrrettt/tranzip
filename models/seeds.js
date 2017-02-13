@@ -540,3 +540,297 @@ newBus.save(function(err, data){
   if (err) console.log(err);
   else console.log(data);
 });
+
+var newBus = new Bus({
+  "bus_number":100,
+  "pm":{
+    "changes_at_school":[
+
+    ],
+      "serves":[
+        "William Blount High School",
+        "Union Grove Middle",
+        "Friendsville Elementary"
+      ],
+      "route":[
+      {
+        "address":"210 East 4th Avenue, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.129665,
+          "lat":35.761931
+        }
+      },
+      {
+        "address":"221 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.138193,
+          "lat":35.753536
+        }
+      },
+      {
+        "address":"610 South Farnum Street, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.144963,
+          "lat":35.752353
+        }
+      },
+      {
+        "address":"701 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.115868,
+          "lat":35.750638
+        }
+      },
+      {
+        "address":"4572 Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.110345,
+          "lat":35.766499
+        }
+      },
+      {
+        "address":"669 West Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.107419,
+          "lat":35.754289
+        }
+      },
+      {
+        "address":"221 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.138193,
+          "lat":35.753536
+        }
+      },
+      {
+        "address":"499 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.13541,
+          "lat":35.750164
+        }
+      },
+      {
+        "address":"701 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.115868,
+          "lat":35.750638
+        }
+      },
+      {
+        "address":"879 Finn Long Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.096402,
+          "lat":35.766796
+        }
+      },
+      {
+        "address":"1099 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.096968,
+          "lat":35.754835
+        }
+      },
+      {
+        "address":"879 Finn Long Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.096402,
+          "lat":35.766796
+        }
+      },
+      {
+        "address":"4215 Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.091333,
+          "lat":35.777519
+        }
+      },
+      {
+        "address":"669 West Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.107419,
+          "lat":35.754289
+        }
+      },
+      {
+        "address":"582 East Main Avenue, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.123968,
+          "lat":35.753135
+        }
+      },
+      {
+        "address":"701 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.115868,
+          "lat":35.750638
+        }
+      },
+      {
+        "address":"4572 Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.110345,
+          "lat":35.766499
+        }
+      },
+      {
+        "address":"4215 Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.091333,
+          "lat":35.777519
+        }
+      },
+      {
+        "address":"221 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.138193,
+          "lat":35.753536
+        }
+      },
+      {
+        "address":"602 south farnum street",
+        "coords":{
+          "lng":-84.145908,
+          "lat":35.752039
+        }
+      },
+      {
+        "address":"117 Dunlap Hollow Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.148137,
+          "lat":35.74938
+        }
+      },
+      {
+        "address":"400 North Farnum Street, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.131023,
+          "lat":35.762548
+        }
+      },
+      {
+        "address":"199 South Farnum Street, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.134088,
+          "lat":35.759461
+        }
+      },
+      {
+        "address":"3301 W Lamar Alexander Pkwy, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.123889,
+          "lat":35.752262
+        }
+      },
+      {
+        "address":"221 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.141618,
+          "lat":35.75178
+        }
+      },
+      {
+        "address":"499 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.135426,
+          "lat":35.750172
+        }
+      }
+    ]
+  },
+    "am":{
+      "changes_at_school":[
+
+      ],
+      "serves":[
+        "William Blount High School",
+        "Union Grove Middle",
+        "Friendsville Elementary"
+      ],
+      "route":[
+      {
+        "address":"4215 Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.091333,
+          "lat":35.777519
+        }
+      },
+      {
+        "address":"962 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.101567,
+          "lat":35.75524
+        }
+      },
+      {
+        "address":"879 Finn Long Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.096402,
+          "lat":35.766796
+        }
+      },
+      {
+        "address":"4572 Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.110345,
+          "lat":35.766499
+        }
+      },
+      {
+        "address":"669 West Vinegar Valley Road, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.107419,
+          "lat":35.754289
+        }
+      },
+      {
+        "address":"499 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.13541,
+          "lat":35.750164
+        }
+      },
+      {
+        "address":"610 South Farnum Street, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.144963,
+          "lat":35.752353
+        }
+      },
+      {
+        "address":"221 Academy Drive",
+        "coords":{
+          "lng":-84.138193,
+          "lat":35.753536
+        }
+      },
+      {
+        "address":"221 Academy Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.138193,
+          "lat":35.753536
+        }
+      },
+      {
+        "address":"701 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.115868,
+          "lat":35.750638
+        }
+      },
+      {
+        "address":"1099 Lane Drive, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.096954,
+          "lat":35.754846
+        }
+      },
+      {
+        "address":"210 E 4th Ave, Friendsville, TN, United States",
+        "coords":{
+          "lng":-84.129665,
+          "lat":35.761931
+        }
+      }
+    ]
+  }
+})
