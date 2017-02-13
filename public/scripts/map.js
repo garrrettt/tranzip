@@ -290,7 +290,7 @@ function sendAndGetData() {
 
 function sendBackToUser(json) {
 
-  if (!am_bus_found && !pm_bus_found) alert("There were no buses found that go to your school. Sorry!")
+  if (!json.am_bus_found && !json.pm_bus_found) alert("There were no buses found that go to your school. Sorry!")
 
   // the directionsService will not let you use a literal {lat: 43.4, lng: 23.2} and makes you use the LatLng data type
   var AMwaypoints = [];
