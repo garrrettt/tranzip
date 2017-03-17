@@ -8,6 +8,26 @@ $('document').ready(function() {
   // on home page, bind the two elements to toggle the model when submitted
   bindSearch('#search', '#search_button');
 
+  // IF WE WANT TO AUTOCOMPLETE THE EDIT QUERIES
+  $(".dropdown-menu li a").click(function(){
+
+    $(".btn:first-child").html($(this).text() + ' <span class="caret"></span>');
+    $(".btn:first-child").val($(this).text());
+
+    var AMorPM = $(this).text();
+
+    var AMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+
+    $( "#adminSearch" ).autocomplete({
+      source: AMorPM == "AM" ? AMaddresses : PMaddresses
+    });
+  });
+
+  $('#nav-icon1, .sidenav-background').click(function(){
+    $('.main-navigation, #nav-icon1').toggleClass('open');
+    $('.sidenav-background').toggle();
+  });
+
   $('.message a').click(function(){
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
   });

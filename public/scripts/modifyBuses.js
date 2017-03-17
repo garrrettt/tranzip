@@ -179,7 +179,7 @@ function initMap() {
   document.getElementById('submit').addEventListener('click', function() {
 
     // get value of selector
-    var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
+    var addAMorPM = $("AMorPMAdd").text();
 
     if (addAMorPM == "AM") validateInfoAndAddMarker(addAMorPM, AMdirectionsRenderers, amWaypoints, AMdirectionsRenderersMarkers, hasUsedAutoComplete);
     if (addAMorPM == "PM") validateInfoAndAddMarker(addAMorPM, PMdirectionsRenderers, pmWaypoints, PMdirectionsRenderersMarkers, hasUsedAutoComplete);
