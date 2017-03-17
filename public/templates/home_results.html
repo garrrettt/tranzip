@@ -1,58 +1,58 @@
-<nav class="navbar navbar-default resultsNav">
+<nav class="navbar mainNav resultsNav">
 
     <div class="mobileNav">
-        <div class="navbar-brand navResults">
-            <div class="container-fluid">
+        <div class="navResults">
+            <div class="smallMargin container-fluid">
                 <div class="row">
                     <div class="resultsContainer">
                         <p>In the morning you will ride bus:</p>
-                        <div  class="amBusNumber"><span id="mobile_am_bus_number"></span></div>
+                        <div class="amBusNumber"><span id="mobile_am_bus_number"></span></div>
                     </div>
 
                     <div class="resultsContainer">
                         <p>In the afternoon you will ride bus:</p>
-                        <div  class="pmBusNumber"><span id="mobile_pm_bus_number"></span></div>
+                        <div class="pmBusNumber"><span id="movie_pm_bus_number"></span></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container resultsDesktopNav">
-        <div class="row">
+    <div class="container-fluid resultsDesktopNav">
 
-            <div class="col-md-3">
-                <a class="navbar-brand" href="/">
-                    <img alt="Brand" src="/img/Tranzip2.png">
-                </a>
-            </div>
+        <div class="navBrand col-md-3">
+            <a href="/" class="hidden-sm hidden-xs">
+                <img alt="tranzip Brand" src="img/tranzipNavLogo.png">
+            </a>
+            <a href="/" class="visible-sm visible-xs">
+                <img alt="tranzip Brand" src="img/tranzipLogo.png">
+            </a>
+        </div>
 
-            <div class="col-md-7">
+        <div class="col-md-6 col-md-offset-1">
 
-                <form class="navbar-form hidden-xs hidden-sm">
-                    <div id="search_bar" class="input-group">
-                        <input type="text" id="search" class="form-control" placeholder="Type in your address here...">
-                        <i id="search_again2" class="searchButton fa fa-lg fa-search"></i>
-                    </div>
-                </form>
+            <form class="navbar-form hidden-xs hidden-sm">
+                <div id="searchInNav" class="input-group">
+                    <input type="text" id="search" class="form-control" placeholder="Type in your address here...">
+                    <i id="search_again2" class="searchButton fa fa-lg fa-search"></i>
+                </div>
+            </form>
 
-            </div><! --/row definition -->
-
-        </div><! --/row -->
+        </div><! --/row definition -->
     </div>
 </nav>
 
 <div id="mobileControls">
 
     <div id="resultsPanel">
-        <div id="results">
+        <div id="results" class="container-fluid">
             <div class="container-fluid">
                 <div class="flexcontainer">
                     <div>
                         <p>Your Morning Bus # </p>
                     </div>
                     <div>
-                        <div  class="amBusNumber"><span id="am_bus_number"></span></div>
+                        <div class="amBusNumber"><span id="am_bus_number"></span></div>
                     </div>
                 </div>
                 <hr />
@@ -61,7 +61,7 @@
                         <p>Your Afternoon Bus # </p>
                     </div>
                     <div>
-                        <div  class="pmBusNumber"><span id="pm_bus_number"></span></div>
+                        <div class="pmBusNumber"><span id="pm_bus_number"></span></div>
                     </div>
                 </div>
             </div>
@@ -82,17 +82,18 @@
 </div>
 
 <div id="mobileTogglePanel" class="visible-xs visible-sm mobileOpenDownPanel">
-    <span><img id="scrollDownImg" src="/img/searchCircle.svg" alt="Scroll Down"></span>
+    <span><img id="scrollDownImg" src="./img/searchCircle.svg" alt="Scroll Down"></span>
 </div>
+
 <div id="toggles">
     <div class="toggleContainer">
         <div class="toggle1">
-            <input id="toggleAM" type="checkbox" onclick="toggleRoute('AM')">
+            <input type="checkbox">
             <span class="button"></span>
             <span class="label">AM</span>
         </div>
         <div class="toggle2">
-            <input id="togglePM" type="checkbox" onclick="toggleRoute('PM')">
+            <input type="checkbox">
             <span class="button"></span>
             <span class="label">PM</span>
         </div>
