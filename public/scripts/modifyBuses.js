@@ -179,7 +179,8 @@ function initMap() {
   document.getElementById('submit').addEventListener('click', function() {
 
     // get value of selector
-    var addAMorPM = $("AMorPMAdd").text();
+    var addAMorPM = $("#AMorPMAdd").text().trim();
+    console.log(addAMorPM);
 
     if (addAMorPM == "AM") validateInfoAndAddMarker(addAMorPM, AMdirectionsRenderers, amWaypoints, AMdirectionsRenderersMarkers, hasUsedAutoComplete);
     if (addAMorPM == "PM") validateInfoAndAddMarker(addAMorPM, PMdirectionsRenderers, pmWaypoints, PMdirectionsRenderersMarkers, hasUsedAutoComplete);
@@ -217,7 +218,7 @@ function back() {
 }
 
 function populateInfoWindow(marker, infowindow, directionsRenderers, associatedWaypoints, associatedMarkers) {
-  console.log(marker)
+  console.log(marker);
   var html = '\
   <div>This marker is ' + marker.address + '</div><br> \
     <div id="infowindowContainer"> \

@@ -29,8 +29,8 @@
     <div class="resultsDesktopNav">
 
         <div style="margin-left: -16px" class="navBrand col-md-3">
-            <a href="index.html">
-                <img alt="tranzip Brand" src=" /img/tranzipNavLogo.png">
+            <a href="/">
+                <img alt="tranzip Brand" src="/img/tranzipNavLogo.png">
             </a>
         </div>
 
@@ -126,12 +126,12 @@
 <div id="toggles">
     <div class="toggleContainer">
         <div class="toggle1">
-            <input id="toggleAM" type="checkbox">
+            <input id="toggleAM" type="checkbox" onclick="toggleRoute('AM')">
             <span class="button"></span>
             <span class="label">AM</span>
         </div>
-        <div id="togglePM" class="toggle2">
-            <input type="checkbox">
+        <div class="toggle2">
+            <input id="togglePM" type="checkbox" onclick="toggleRoute('PM')">
             <span class="button"></span>
             <span class="label">PM</span>
         </div>

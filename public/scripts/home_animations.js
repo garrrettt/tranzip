@@ -11,12 +11,10 @@ $('document').ready(function() {
   // IF WE WANT TO AUTOCOMPLETE THE EDIT QUERIES
   $(".dropdown-menu li a").click(function(){
 
-    $(".btn:first-child").html($(this).text() + ' <span class="caret"></span>');
-    $(".btn:first-child").val($(this).text());
+    $("#AMorPMAdd").html($(this).text() + ' <span class="caret"></span>');
+    $("#AMorPMAdd").val($(this).text());
 
     var AMorPM = $(this).text();
-
-    var AMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
 
     $( "#adminSearch" ).autocomplete({
       source: AMorPM == "AM" ? AMaddresses : PMaddresses
