@@ -95,18 +95,17 @@
     </ul>
 </div>
 
-
 <div id="editsPanel">
     <div id="edits">
-        <h4>Changes Made:</h4>
+        <h4>Bus Stops:</h4>
         <div class="container-fluid changesDiv">
-            <h1 id="amHeading" style="display: none;">AM</h1>
-            <div id="amChanges"></div>
+            <h1 id="amHeading">AM</h1>
+            <div id="amStops"></div>
 
             <hr>
 
-            <h1 id="pmHeading" style="display: none;">PM</h1>
-            <div id="pmChanges"></div>
+            <h1 id="pmHeading">PM</h1>
+            <div id="pmStops"></div>
         </div>
     </div>
     <div>
@@ -116,6 +115,27 @@
         <h5>CodeFusion &copy; 2016</h5>
     </div>
 </div>
+
+<!--<div id="editsPanel">-->
+    <!--<div id="edits">-->
+        <!--<h4>Changes Made:</h4>-->
+        <!--<div class="container-fluid changesDiv">-->
+            <!--<h1 id="amHeading" style="display: none;">AM</h1>-->
+            <!--<div id="amChanges"></div>-->
+
+            <!--<hr>-->
+
+            <!--<h1 id="pmHeading" style="display: none;">PM</h1>-->
+            <!--<div id="pmChanges"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div>-->
+        <!--<button id="finalConfirmation" class="btn btn-success squareButton adminEditSave">Save Changes</button>-->
+    <!--</div>-->
+    <!--<div id="footer2" class="navbar-fixed-bottom hidden-xs hidden-sm">-->
+        <!--<h5>CodeFusion &copy; 2016</h5>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 <div id="googlemapsWithRoutes"></div>
@@ -156,6 +176,39 @@
     var PMroute = <%- PMroute %>;
     var AMaddresses = <%- AMaddresses %>;
     var PMaddresses = <%- PMaddresses %>;
+
+    for (var i=0; i < AMaddresses.length; i++) {
+        var amBusStopsPanel = document.getElementById('amStops');
+
+        var amHTML = ' \
+        <div style="margin: 15px;"> \
+            <div style="display: inline;">' + AMaddresses[i] + '</div> \
+            <div class="btn btn-success" style="display: inline;" onclick="selectAddressOnMap(\''+AMaddresses[i]+'\', \'AM\')">Select</div> \
+        </div> \
+        \ ';
+
+        var amDiv = document.createElement('div');
+        amDiv.innerHTML = amHTML;
+
+        amBusStopsPanel.append(amDiv);
+    }
+
+    for (var i=0; i < PMaddresses.length; i++) {
+        var pmBusStopsPanel = document.getElementById('pmStops');
+
+        var pmHTML = ' \
+        <div style="margin: 15px;"> \
+            <div style="display: inline;">' + PMaddresses[i] + '</div> \
+            <div class="btn btn-success" style="display: inline;" onclick="selectAddressOnMap(\''+PMaddresses[i]+'\', \'PM\')">Select</div> \
+        </div> \
+        \ ';
+
+        var pmDiv = document.createElement('div');
+        pmDiv.innerHTML = pmHTML;
+
+        pmBusStopsPanel.append(pmDiv)
+    }
+
 </script>
 <script src="/scripts/modifyBuses.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCMEZiWzR_Oe22ml8Rl1-BNzdEG5pCJO6s&callback=initMap" async defer></script>

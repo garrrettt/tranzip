@@ -755,62 +755,88 @@ function removeFromSideBar(id) {
   toDelete.parentNode.removeChild(toDelete);
 }
 
-function addToChangesSideBar(AMorPM, typeofChange, address) {
-
-  uniqueSideBarId += 1;
-
-  // the first time they make a change, we'll pop up the nifty little AM/PM headers
+function selectAddressOnMap(address, AMorPM) {
   if (AMorPM == "AM") {
-    document.getElementById('amHeading').style.display = "inline";
+    for (var i = 0; i < AMdirectionsRenderersMarkers.length; i++) {
+      for (var j = 0; j < AMdirectionsRenderersMarkers[i].length; j++) {
+        if (AMdirectionsRenderersMarkers[i][j].address == address) {
+          google.maps.event.trigger(AMdirectionsRenderersMarkers[i][j], 'click');
+
+          break;
+        }
+      }
+    }
   } else if (AMorPM == "PM") {
-    document.getElementById('pmHeading').style.display = "inline";
-  }
+    console.log(PMdirectionsRenderersMarkers.length) // 1
+    console.log(PMdirectionsRenderersMarkers[i].length) // 4
+    for (var i = 0; i < PMdirectionsRenderersMarkers.length; i++) {
+      for (var j = 0; j < PMdirectionsRenderersMarkers[i].length; j++) {
+        if (PMdirectionsRenderersMarkers[i][j].address == address) {
+          google.maps.event.trigger(PMdirectionsRenderersMarkers[i][j], 'click');
 
-  var sideBar;
-  if (AMorPM == "AM") {
-    sideBar = document.getElementById('amChanges');
-  } else {
-    sideBar = document.getElementById('pmChanges');
-  }
-
-  if (typeofChange == "remove") {
-    var html = ' \
-      <div id="change_'+ uniqueSideBarId.toString() + '" class="changedAddress"> \
-        <p class="input-group"> \
-          <span class="input-group-btn"> \
-            <button class="btnDel">Deleted:</button> \
-          </span> \
-          <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
-          <span class="input-group-btn"> \
-            <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
-          </span> \
-        </p> \
-      </div>';
-
-    var div = document.createElement('div');
-    div.innerHTML = html;
-
-    sideBar.appendChild(div);
-  } else if (typeofChange == "add") {
-    var html = ' \
-      <div id="change_'+ uniqueSideBarId.toString() + '" class="changedAddress"> \
-        <p class="input-group"> \
-          <span class="input-group-btn"> \
-            <button class="btnAdd">Added:</button> \
-          </span> \
-          <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
-          <span class="input-group-btn"> \
-            <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
-          </span> \
-        </p> \
-      </div>';
-
-    var div = document.createElement('div');
-    div.innerHTML = html;
-
-    sideBar.appendChild(div);
+          break;
+        }
+      }
+    }
   }
 }
+
+// function addToChangesSideBar(AMorPM, typeofChange, address) {
+//
+//   uniqueSideBarId += 1;
+//
+//   // the first time they make a change, we'll pop up the nifty little AM/PM headers
+//   if (AMorPM == "AM") {
+//     document.getElementById('amHeading').style.display = "inline";
+//   } else if (AMorPM == "PM") {
+//     document.getElementById('pmHeading').style.display = "inline";
+//   }
+//
+//   var sideBar;
+//   if (AMorPM == "AM") {
+//     sideBar = document.getElementById('amChanges');
+//   } else {
+//     sideBar = document.getElementById('pmChanges');
+//   }
+//
+//   if (typeofChange == "remove") {
+//     var html = ' \
+//       <div id="change_'+ uniqueSideBarId.toString() + '" class="changedAddress"> \
+//         <p class="input-group"> \
+//           <span class="input-group-btn"> \
+//             <button class="btnDel">Deleted:</button> \
+//           </span> \
+//           <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
+//           <span class="input-group-btn"> \
+//             <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
+//           </span> \
+//         </p> \
+//       </div>';
+//
+//     var div = document.createElement('div');
+//     div.innerHTML = html;
+//
+//     sideBar.appendChild(div);
+//   } else if (typeofChange == "add") {
+//     var html = ' \
+//       <div id="change_'+ uniqueSideBarId.toString() + '" class="changedAddress"> \
+//         <p class="input-group"> \
+//           <span class="input-group-btn"> \
+//             <button class="btnAdd">Added:</button> \
+//           </span> \
+//           <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
+//           <span class="input-group-btn"> \
+//             <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
+//           </span> \
+//         </p> \
+//       </div>';
+//
+//     var div = document.createElement('div');
+//     div.innerHTML = html;
+//
+//     sideBar.appendChild(div);
+//   }
+// }
 
 // For the to lower right buttons
 var toggleAM;
