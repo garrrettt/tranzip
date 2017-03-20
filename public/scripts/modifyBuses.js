@@ -267,7 +267,7 @@ function addMarker(AMorPM, directionsRenderers, waypoints, markerArray, hasUsedA
   var addAddress = document.getElementById('adminSearch').value;
 
   // add to sidebar
-  addToChangesSideBar(AMorPM, "add", addAddress);
+  addToChangesModal(AMorPM, "add", addAddress);
 
   // get coords from address
   geocoder.geocode( geocodeOptions(hasUsedAutoComplete, addAddress), function(results, status) {
@@ -296,7 +296,7 @@ function addMarker(AMorPM, directionsRenderers, waypoints, markerArray, hasUsedA
           },
           address: addAddress,
           newMarker: true,
-          uniqueId: uniqueSideBarId
+          uniqueId: uniqueModalId
         });
       }
 
@@ -409,7 +409,7 @@ function removeFromMap(infowindow, AMorPM, directionsRenderers, waypoints, marke
         if (AMroute[i].lat == infowindow.anchor.position.lat().toFixed(6) && AMroute[i].lng == infowindow.anchor.position.lng().toFixed(6)) {
 
           // add to sidebar
-          addToChangesSideBar(AMorPM, "remove", AMaddresses[i]);
+          addToChangesModal(AMorPM, "remove", AMaddresses[i]);
 
           changes.remove.push({
             AMorPM: 'AM',
@@ -424,7 +424,7 @@ function removeFromMap(infowindow, AMorPM, directionsRenderers, waypoints, marke
         if (PMroute[i].lat == infowindow.anchor.position.lat().toFixed(6) && PMroute[i].lng == infowindow.anchor.position.lng().toFixed(6)) {
 
           // add to sidebar
-          addToChangesSideBar(AMorPM, "remove", PMaddresses[i]);
+          addToChangesModal(AMorPM, "remove", PMaddresses[i]);
 
           changes.remove.push({
             AMorPM: 'PM',
@@ -765,7 +765,7 @@ var levDist = function(s, t) {
   return d[n][m];
 };
 
-var uniqueSideBarId = 0;
+var uniqueModalId = 0;
 
 function removeFromSideBar(id) {
   var toDelete = document.getElementById("change_" + id);
@@ -797,62 +797,51 @@ function selectAddressOnMap(address, AMorPM) {
   }
 }
 
-// function addToChangesSideBar(AMorPM, typeofChange, address) {
-//
-//   uniqueSideBarId += 1;
-//
-//   // the first time they make a change, we'll pop up the nifty little AM/PM headers
-//   if (AMorPM == "AM") {
-//     document.getElementById('amHeading').style.display = "inline";
-//   } else if (AMorPM == "PM") {
-//     document.getElementById('pmHeading').style.display = "inline";
-//   }
-//
-//   var sideBar;
-//   if (AMorPM == "AM") {
-//     sideBar = document.getElementById('amChanges');
-//   } else {
-//     sideBar = document.getElementById('pmChanges');
-//   }
-//
-//   if (typeofChange == "remove") {
-//     var html = ' \
-//       <div id="change_'+ uniqueSideBarId.toString() + '" class="changedAddress"> \
-//         <p class="input-group"> \
-//           <span class="input-group-btn"> \
-//             <button class="btnDel">Deleted:</button> \
-//           </span> \
-//           <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
-//           <span class="input-group-btn"> \
-//             <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
-//           </span> \
-//         </p> \
-//       </div>';
-//
-//     var div = document.createElement('div');
-//     div.innerHTML = html;
-//
-//     sideBar.appendChild(div);
-//   } else if (typeofChange == "add") {
-//     var html = ' \
-//       <div id="change_'+ uniqueSideBarId.toString() + '" class="changedAddress"> \
-//         <p class="input-group"> \
-//           <span class="input-group-btn"> \
-//             <button class="btnAdd">Added:</button> \
-//           </span> \
-//           <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
-//           <span class="input-group-btn"> \
-//             <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
-//           </span> \
-//         </p> \
-//       </div>';
-//
-//     var div = document.createElement('div');
-//     div.innerHTML = html;
-//
-//     sideBar.appendChild(div);
-//   }
-// }
+function addToChangesModal(AMorPM, typeofChange, address) {
+
+  uniqueModalId += 1;
+
+  var modal;
+  var changesHTML;
+  if (AMorPM == "AM") {
+    modal = document.getElementById('amChanges');
+  } else {
+    modal = document.getElementById('pmChanges');
+  }
+
+  if (typeofChange == "remove") {
+    changesHTML = ' \
+      <div id="change_'+ uniqueModalId.toString() + '" class="changedAddress"> \
+        <p class="input-group"> \
+          <span class="input-group-btn"> \
+            <button class="btnDel">Deleted:</button> \
+          </span> \
+          <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
+          <span class="input-group-btn"> \
+            <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
+          </span> \
+        </p> \
+      </div>';
+  } else if (typeofChange == "add") {
+    changesHTML = ' \
+      <div id="change_'+ uniqueModalId.toString() + '" class="changedAddress"> \
+        <p class="input-group"> \
+          <span class="input-group-btn"> \
+            <button class="btnAdd">Added:</button> \
+          </span> \
+          <input  type="text" tabindex="-1" class="addressNames" value="' + address + '" readonly> \
+          <span class="input-group-btn"> \
+            <button class="btn btn-default removeChange"><i class="fa fa-times"></i></button> \
+          </span> \
+        </p> \
+      </div>';
+  }
+
+  var div = document.createElement('div');
+  div.innerHTML = changesHTML;
+
+  modal.appendChild(div);
+}
 
 // For the to lower right buttons
 var toggleAM;

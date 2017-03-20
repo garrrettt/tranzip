@@ -94,7 +94,10 @@ $('document').ready(function() {
     e.preventDefault();
   });
 
-  $('#infoModal').modal('toggle');
+  $('#modalConfirmation').click(function() {
+    $('#infoModal').modal('toggle');
+  });
+
 });
 
 function setUpMenu() {

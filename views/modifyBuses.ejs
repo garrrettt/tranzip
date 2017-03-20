@@ -24,6 +24,24 @@
 
 <body>
 
+<div id="infoModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ready to save your changes?</h4>
+            </div>
+            <div id="" class="modal-body">
+                <div id="amChanges"></div>
+                <div id="pmChanges"></div>
+            </div>
+            <div class="modal-footer flexContainerRight">
+                <button id="finalConfirmation" type="button" class="btn btn-default" data-dismiss="modal">Save Changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <nav class="navbar mainNav adminNav">
 
     <div class="resultsDesktopNav">
@@ -127,34 +145,12 @@
         </div>
     </div>
     <div>
-        <button id="finalConfirmation" class="btn btn-success squareButton adminEditSave">Save Changes</button>
+        <button id="modalConfirmation" class="btn btn-success squareButton adminEditSave">Save Changes</button>
     </div>
     <div id="footer2" class="navbar-fixed-bottom hidden-xs hidden-sm">
         <h5>CodeFusion &copy; 2016</h5>
     </div>
 </div>
-
-<!--<div id="editsPanel">-->
-    <!--<div id="edits">-->
-        <!--<h4>Changes Made:</h4>-->
-        <!--<div class="container-fluid changesDiv">-->
-            <!--<h1 id="amHeading" style="display: none;">AM</h1>-->
-            <!--<div id="amChanges"></div>-->
-
-            <!--<hr>-->
-
-            <!--<h1 id="pmHeading" style="display: none;">PM</h1>-->
-            <!--<div id="pmChanges"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div>-->
-        <!--<button id="finalConfirmation" class="btn btn-success squareButton adminEditSave">Save Changes</button>-->
-    <!--</div>-->
-    <!--<div id="footer2" class="navbar-fixed-bottom hidden-xs hidden-sm">-->
-        <!--<h5>CodeFusion &copy; 2016</h5>-->
-    <!--</div>-->
-<!--</div>-->
-
 
 <div id="googlemapsWithRoutes"></div>
 
