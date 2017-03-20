@@ -9,16 +9,16 @@ $('document').ready(function() {
   bindSearch('#search', '#search_button');
 
   // IF WE WANT TO AUTOCOMPLETE THE EDIT QUERIES
-  $(".dropdown-menu li a").click(function(){
+  $("#add-dropdown-menu li a").click(function(){
 
     $("#AMorPMAdd").html($(this).text() + ' <span class="caret"></span>');
     $("#AMorPMAdd").val($(this).text());
+  });
 
-    var AMorPM = $(this).text();
+  $("#select-dropdown-menu li a").click(function(){
 
-    $( "#adminSearch" ).autocomplete({
-      source: AMorPM == "AM" ? AMaddresses : PMaddresses
-    });
+    $("#AMorPMSelect").html($(this).text() + ' <span class="caret"></span>');
+    $("#AMorPMSelect").val($(this).text());
   });
 
   $('#nav-icon1, .sidenav-background').click(function(){

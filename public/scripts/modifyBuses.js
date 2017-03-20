@@ -632,35 +632,53 @@ function validateInfoAndAddMarker(AMorPM, directionsRenderer, associatedWaypoint
 }
 
 // Editing suggestions
-// document.getElementById('submit').addEventListener('click', function() {
-//
-//   // get value of selector
-//   var addAMorPM = document.getElementById('dropdown').options[document.getElementById('dropdown').selectedIndex].text;
-//
-//   // get address
-//   var address = document.getElementById('adminSearch').value;
-//
-//   if (addAMorPM == "AM") {
-//     var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
-//
-//     console.log(threeMostSimilarAddresses);
-//
-//     for (var i=0; i < AMdirectionsRenderersMarkers.length; i++) {
-//       for (var j=0; j < AMdirectionsRenderersMarkers[i].length; j++) {
-//         if (AMdirectionsRenderersMarkers[i][j].address == threeMostSimilarAddresses[0]) {
-//           google.maps.event.trigger(AMdirectionsRenderersMarkers[i][j], 'click');
-//
-//           break;
-//         }
-//       }
-//     }
-//   } else if (addAMorPM == "PM") {
-//     var threeMostSimilarAddresses = findMostSimilarStringInArray(address, AMaddresses);
-//   }
-//
-// });
+document.getElementById('busStopSearch').addEventListener('input', function() {
 
-function findMostSimilarStringInArray(string, array) {
+  // get value of selector
+  var selectAMorPM = $("#AMorPMSelect").text().trim();
+
+  // get address
+  var addressToSelect = document.getElementById('busStopSearch').value;
+
+  var selectionHTML = '';
+  var threeMostSimilarAddresses;
+
+  if (addressToSelect == '') {
+    selectionHTML = '';
+  } else if (selectAMorPM == "AM") {
+    threeMostSimilarAddresses = findMostSimilarStringsInArray(addressToSelect, AMaddresses);
+
+    console.log(threeMostSimilarAddresses);
+
+    for (var i = 0; i < threeMostSimilarAddresses.length; i++) {
+      selectionHTML += ' \
+        <div style="margin: 15px;"> \
+            <div style="display: inline;">' + threeMostSimilarAddresses[i] + '</div> \
+            <div class="btn btn-success" style="display: inline;" onclick="selectAddressOnMap(\'' + threeMostSimilarAddresses[i] + '\', \'AM\')">Select</div> \
+        </div> \
+        \ ';
+    }
+  } else if (selectAMorPM == "PM") {
+    threeMostSimilarAddresses = findMostSimilarStringsInArray(addressToSelect, PMaddresses);
+
+    console.log(threeMostSimilarAddresses);
+
+    for (var i = 0; i < threeMostSimilarAddresses.length; i++) {
+      selectionHTML += ' \
+        <div style="margin: 15px;"> \
+            <div style="display: inline;">' + threeMostSimilarAddresses[i] + '</div> \
+            <div class="btn btn-success" style="display: inline;" onclick="selectAddressOnMap(\'' + threeMostSimilarAddresses[i] + '\', \'PM\')">Select</div> \
+        </div> \
+        \ ';
+    }
+  }
+
+  var selectionAutoCompDiv = document.getElementById('selectSearchSuggestions');
+
+  selectionAutoCompDiv.innerHTML = selectionHTML;
+});
+
+function findMostSimilarStringsInArray(string, array) {
 
   var threeClosestMatches = [];
   var distancesFromSource = [];
@@ -767,8 +785,6 @@ function selectAddressOnMap(address, AMorPM) {
       }
     }
   } else if (AMorPM == "PM") {
-    console.log(PMdirectionsRenderersMarkers.length) // 1
-    console.log(PMdirectionsRenderersMarkers[i].length) // 4
     for (var i = 0; i < PMdirectionsRenderersMarkers.length; i++) {
       for (var j = 0; j < PMdirectionsRenderersMarkers[i].length; j++) {
         if (PMdirectionsRenderersMarkers[i][j].address == address) {

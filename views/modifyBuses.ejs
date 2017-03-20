@@ -41,7 +41,7 @@
                         <button id="AMorPMAdd" type="button" class="btn btn-secondary amToggle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             AM <span class="caret"></span>
                         </button>
-                        <div class="dropdown-menu">
+                        <div id="add-dropdown-menu" class="dropdown-menu">
                             <ul id="dropdown" class="nav nav-pills nav-stacked">
                                 <li><a class="AMorPM" href="#">AM</a></li>
                                 <li><a class="AMorPM" href="#">PM</a></li>
@@ -98,6 +98,24 @@
 <div id="editsPanel">
     <div id="edits">
         <h4>Bus Stops:</h4>
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button id="AMorPMSelect" type="button" class="btn btn-secondary amToggle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    AM <span class="caret"></span>
+                </button>
+                <div id="select-dropdown-menu" class="dropdown-menu">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a class="AMorPM" href="#">AM</a></li>
+                        <li><a class="AMorPM" href="#">PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="searchInNav" class="input-group">
+                <input type="text" id="busStopSearch" class="form-control" placeholder="Search bus stops...">
+                <i id="selectBusStop" class="fa fa-lg fa-search"></i>
+            </div>
+        </div>
+        <div id="selectSearchSuggestions"></div>
         <div class="container-fluid changesDiv">
             <h1 id="amHeading">AM</h1>
             <div id="amStops"></div>
