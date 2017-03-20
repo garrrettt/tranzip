@@ -517,7 +517,6 @@ function moveMarker(infowindow, waypoints, directionsRenderers, hasUsedAutoCompl
         if (changes.add[i].coords.lat == infowindow.anchor.position.lat().toFixed(6) &&
           changes.add[i].coords.lng == infowindow.anchor.position.lng().toFixed(6)) {
           if (changes.add[i].newMarker === true) {
-            markerShouldBeAddedToChanges = false;
 
             // instead of adding the edit to changes.edit, just change the entry in changes.add
             changes.add[i].address = editedAddress;
@@ -536,11 +535,11 @@ function moveMarker(infowindow, waypoints, directionsRenderers, hasUsedAutoCompl
           markerShouldBeAddedToChanges = false;
 
           // if the new edited location is the same as the old location, remove from changes.edit
-          if (infowindow.anchor.position.lat().toFixed(6) == changes.edit[i].oldCoords.lat) {
+          if (results[0].geometry.location.lat().toFixed(6) == changes.edit[i].oldCoords.lat) {
             changes.edit.splice(i, 1);
           } else {
             changes.edit[i].newAddress = editedAddress;
-            changes.edit[i].coords = {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()};
+            changes.edit[i].coords = {lat: results[0].geometry.location.lat().toFixed(6), lng: results[0].geometry.location.lng().toFixed(6)};
           }
         }
       }
