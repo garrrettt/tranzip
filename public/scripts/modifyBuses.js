@@ -530,8 +530,8 @@ function moveMarker(infowindow, waypoints, directionsRenderers, hasUsedAutoCompl
       // if marker already exists in changes.edit (don't add another entry to the changes.edit)
       for (var i=0; i < changes.edit.length; i++) {
 
-        if (changes.edit[i].coords.lat.toFixed(6) == infowindow.anchor.position.lat().toFixed(6) &&
-          changes.edit[i].coords.lng.toFixed(6) == infowindow.anchor.position.lng().toFixed(6)) {
+        if (parseFloat(changes.edit[i].coords.lat).toFixed(6) == infowindow.anchor.position.lat().toFixed(6) &&
+          parseFloat(changes.edit[i].coords.lng).toFixed(6) == infowindow.anchor.position.lng().toFixed(6)) {
 
           markerShouldBeAddedToChanges = false;
 
@@ -573,7 +573,7 @@ function moveMarker(infowindow, waypoints, directionsRenderers, hasUsedAutoCompl
           infowindow.anchor.AMorPM == "AM" ? 4 : 2,
           infowindow.anchor.AMorPM == "AM" ? 1 : 10000
         );
-      } else if (infowindow.anchor.id == 0) {
+      } else if (infowindow.anchor.id == 0 && infowindow.anchor.directionsRendererId != 0) {
 
         // reroute directions for the current directions renderer and the one before
         for (var i=0; i < 2; i++) {
@@ -593,6 +593,22 @@ function moveMarker(infowindow, waypoints, directionsRenderers, hasUsedAutoCompl
             infowindow.anchor.AMorPM == "AM" ? 1 : 10000
           );
         }
+      } else if (infowindow.anchor.id == 0 && infowindow.anchor.directionsRendererId == 0) {
+        waypoints[0][0] = { // very first waypoint
+          location: new google.maps.LatLng({lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()}),
+          stopover: false
+        };
+
+        requestDirections(
+          waypoints[0][0].location,
+          waypoints[0][waypoints[0].length-1].location,
+          waypoints[0],
+          directionsRenderers[0],
+          infowindow.anchor.AMorPM,
+          false,
+          infowindow.anchor.AMorPM == "AM" ? 4 : 2,
+          infowindow.anchor.AMorPM == "AM" ? 1 : 10000
+        );
       } else if (infowindow.anchor.id == 22) {
 
         for (var i=0; i < 2; i++) {
