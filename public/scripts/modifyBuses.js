@@ -546,7 +546,6 @@ function moveMarker(infowindow, waypoints, directionsRenderers, hasUsedAutoCompl
 
       // add to list of all moved waypoints for this editing session
       if (markerShouldBeAddedToChanges) {
-        changes.edit.push({
           AMorPM: infowindow.marker.AMorPM,
           coords: {lat: results[0].geometry.location.lat().toFixed(6), lng: results[0].geometry.location.lng().toFixed(6)},
           oldCoords: {lat: infowindow.anchor.position.lat().toFixed(6), lng: infowindow.anchor.position.lng().toFixed(6)},

@@ -16,37 +16,45 @@
     <link href="/css/main_style.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9] -->
 </head>
 
 <body>
 
-<nav class="navbar mainNav resultsNav">
+<nav class="navbar mainNav container-fluid">
 
-    <div class="desktopNav">
-
-        <div style="margin-left: -16px" class="navBrand col-md-3">
-            <a href="/">
-                <img alt="tranzip Brand" src="/img/tranzipNavLogo.png">
-            </a>
-        </div>
-
-        <div class="col-md-6">
-
-        </div><! --/row definition -->
-
-        <div class="col-md-3 flexcontainer">
-
-            <ul class="nav inlineNav">
-                <li><a href="/admin/logout" class="signOut2" >Sign Out</a></li>
-            </ul>
-
-        </div><! --/row definition -->
-
-    </div><! --/row -->
+    <div class="col-xs-2">
+        <a href="#" class="signIn adminButtonNav">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span class="hidden-sm hidden-xs">Help</span>
+        </a>
+    </div>
+    <div class="navBrand col-xs-8">
+        <a href="/">
+            <img alt="tranzip Brand" src="/img/tranzipNavLogo.png">
+        </a>
+    </div>
+    <div class="col-xs-2">
+        <a href="#" class="help"></a>
+    </div>
 
 </nav>
+<ul class="adminToggle">
+    <div id="nav-icon1">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</ul>
+<nav class="main-navigation" role='navigation'>
+    <h2 class="menuTitle">Menu</h2>
+    <ul>
+        <li><a href=""><i class="fa fa-user-circle-o"></i>Profile</a></li>
+        <li><a href="/admin/<%= school %>/"><i class="fa fa-home"></i>Admin Home</a></li>
+        <li><a href="/"><i class="fa fa-external-link"></i>Tranzip Home</a></li>
+        <li><a href="/logout"><i class="fa fa-sign-out"></i>Log Out</a></li>
+    </ul>
+</nav>
+<div class="sidenav-background"></div>
 
 <div id="busMenuState">
     <ul>
@@ -99,26 +107,53 @@
                 <p class="alert-warning">* for optimal experience please do not view on mobile devices.</p>
             </div>
 
-            <% for (var i=0; i < busNumbers.length; i++) { %>
-            <!--<div class="btn btn-danger" onclick="removeBus(<%= busNumbers[i] %>)">Delete Bus <%= busNumbers[i] %></div>-->
-
-                <% if (i % 6 == 0) { %>
-                    <% if (i != 0) { %>
-                        </div>
-                    <% } %>
-
-                    <div class="row text-center pad-top">
-                <% } %>
-
+            <div class="row text-center pad-top">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <a href="#" onclick="requestDelete(<%= busNumbers[i] %>)">
-                        <div class="deleteBusOption">
-                            <i class="fa fa-bus fa-3x"></i>
-                            <h4>Bus <%= busNumbers[i] %></h4>
-                        </div>
-                    </a>
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
                 </div>
-            <% } %>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row text-center pad-top">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <div class="deleteBusOption">
+                        <i class="fa fa-bus fa-3x"></i>
+                        <h4>Bus 5</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </ul>
 </div>
@@ -195,51 +230,52 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="busSwitchesAtASchool">
-                        <label class="col-md-4 control-label" for="">Does the bus switch at a certain school?</label>
-                        <div class="col-md-4">
-                            <div class="btn btn-success" onclick="busDoesSwitchAtASchool()">Yes</div>
-                            <div class="btn btn-success" onclick="hideyesno()">No</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style="display: none" id="selectWhatSchoolsBusSwitchesAt">
+                    <div id="selectWhatSchoolsBusSwitchesAt" class="form-group">
                         <label class="col-md-4 control-label">Bus Passenger Exchanges</label>
+
                         <div class="col-md-4">
-                            <div class="createBusContainer">
-                                <h4>Passengers that go to: </h4>
-                                <select name="" id="studentsGoingTo">
-                                    <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
-                                    <option id=""><%= JSON.parse(schoolsInSystem)[i] %></option>
-                                    <% } %>
-                                </select>
+                            <div class="checkbox switch-alternative">
+                                <label class="toggleLabel">
+                                    <input type="checkbox" class="switch-control">
+                                    <span class="switch-label"></span>
+                                </label>
                             </div>
-                            <div class="createBusContainer">
-                                <h4>Passengers will switch buses at: </h4>
-                                <select id="changeAt" name="">
-                                    <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
-                                    <option id=""><%= JSON.parse(schoolsInSystem)[i] %></option>
-                                    <% } %>
-                                </select>
+                            <div class="added-form-fields">
+                                <div class="createBusContainer">
+                                    <h4>Passengers that go to: </h4>
+                                    <select name="" id="studentsGoingTo">
+                                        <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                                        <option id=""><%= JSON.parse(schoolsInSystem)[i] %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="createBusContainer">
+                                    <h4>Passengers will switch to bus: </h4>
+                                    <select id="" name="">
+                                        <option value="1">#6</option>
+                                        <option value="2">#43</option>
+                                    </select>
+                                </div>
+                                <div class="createBusContainer">
+                                    <h4>Passengers will switch buses at: </h4>
+                                    <select id="changeAt" name="">
+                                        <% for (var i=0; i < JSON.parse(schoolsInSystem).length; i++) { %>
+                                        <option id=""><%= JSON.parse(schoolsInSystem)[i] %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="createBusContainer">
+                                    <h4>Time of day: </h4>
+                                    <select id="timeOfDay" name="">
+                                        <option value="1">Morning</option>
+                                        <option value="2">Afternoon</option>
+                                        <option value="2">Morning and Afternoon</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="createBusContainer">
-                                <h4>Time of day: </h4>
-                                <select id="timeOfDay" name="">
-                                    <option>Morning</option>
-                                    <option>Afternoon</option>
-                                    <option>Morning and Afternoon</option>
-                                </select>
-                            </div>
+                            <button id="busSwitchesAtASchool" class="btn btn-success justifiedBtn" onclick="generateBus()">Create</button>
                         </div>
                     </div>
-
-                    <div class="form-group" id="busSwitchesAtASchool">
-                        <label class="col-md-4 control-label" for=""></label>
-                        <div class="col-md-4">
-                            <div class="btn btn-success justifiedBtn" onclick="generateBus()">Create</div>
-                        </div>
-                    </div>
-
 
                 </fieldset>
             </form>
@@ -249,11 +285,16 @@
 
 </div>
 
-<div class="container adminPageState">
+<div class="container adminControls">
     <div class="flexContainerRight">
-        <button id="deleteBusButton" class="btn btn-danger squareButton"><i class="fa fa-times-circle"></i> Delete
-        </button>
-        <button id="addBusButton" class="btn btn-primary squareButton" onclick="resetAddBusForm()"><i class="fa fa-plus-circle"></i> Add</button>
+        <div class="nbs">
+            <a href="#" class="nb nbi nbsb1" id="editBusButton"><i class="fa fa-pencil"></i> <span>Edit Settings </span></a>
+            <a href="#" class="nb nbi nbsb2" id="deleteBusButton"><i class="fa fa-times"></i> <span>Delete A Bus </span></a>
+            <a class="nb nb-main" id="addBusButton"> <i class="fa fa-plus" onclick="resetAddBusForm()"></i><span>Add A Bus </span></a>
+        </div>
+        <div class="home">
+            <a href="#" class="nb nb-main" id="backToAdminHome"><i class="fa fa-home"></i> <span>Back to Admin Home </span></a>
+        </div>
     </div>
 </div>
 
@@ -271,6 +312,7 @@
 <script src="/scripts/admin_util.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/scripts/home_animations.js"></script>
+
 
 </body>
 </html>

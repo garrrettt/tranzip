@@ -147,13 +147,17 @@ $glow: $size * 0.125;
   height: 100%;
   margin-top: 2px;
   text-align: center;
-  img {
+  #homepageLogo {
     margin-top: 3px;
     width: 175px;
     @media screen and (min-width: $break-small) {
       width: 200px;
       margin-top: 0;
     }
+  }
+  img{
+    margin-top: 2px;
+    width: 200px;
   }
 }
 .currentPageNameNav{
@@ -723,13 +727,13 @@ nav ul li{
 }
 
 .nbs {
-  z-index: 1000;
+  z-index: 11;
   position: fixed;
   bottom: 20px;
   right: 20px;
   height: 40px;
   width: 40px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 .nbs:hover {
   height: 234px;
@@ -751,10 +755,9 @@ nav ul li{
   transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
-  -ms-transition: all 0.2s linear;
 }
 .nbi.img {
-  background: #FFF;
+  background: $quartinarycolor;
 }
 .nbi img {
   width: 32px;
@@ -775,13 +778,14 @@ nav ul li{
   outline: none;
   padding: 0;
   box-shadow: 0 0 2px rgba(0,0,0,.14),0 2px 4px rgba(0,0,0,.28);
-  background-color: #db4437;
+  background-color: $secondarycolor;
   color: #EEE;
   pointer-events: auto;
   text-align: center;
 }
 .nb:hover {
-  color: #FFF;
+  text-decoration: none;
+  color: $quartinarycolor;
 }
 .nb:hover span {
   display: inline;
@@ -792,63 +796,50 @@ nav ul li{
 .nb-main {
   height: 40px;
   width: 40px;
-  font-size: 1.9em;
-  line-height: 1.4em;
-  bottom: 0px;
+  font-size: 1.4em;
+  line-height: 1.9em;
+  bottom: 0;
 }
 .nbi {
   height: 27px;
   width: 32px;
   padding-top: 5px;
-  font-size: 1.2em;
-  line-height: 1.4em;
+  font-size: 1em;
   margin-left: 4px;
   bottom: 4px;
   transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
-  -ms-transition: all 0.2s linear;
-}
-.nbi i {
-  margin-top: 8px;
-}
-.nbsb0 {
-  bottom: 4px;
-  background-color: #1998B3;
 }
 .nbsb1 {
   bottom: 4px;
-  background-color: #1998B3;
+  background-color: $bootstrap-green;
 }
 .nbsb2 {
   bottom: 4px;
-  background-color: #db4437;
-}
-.nbsb3 {
-  bottom: 4px;
-  background-color: #3c80f6;
-}
-.nbsb4 {
-  bottom: 4px;
-  background-color: #D5A716;
-}
-.nbs:hover .nbsb0 {
-  bottom: 196px;
+  background-color: $primarycolor;
 }
 .nbs:hover .nbsb1 {
-  bottom: 158px;
-}
-.nbs:hover .nbsb2 {
-  bottom: 120px;
-}
-.nbs:hover .nbsb3 {
   bottom: 82px;
 }
-.nbs:hover .nbsb4 {
+.nbs:hover .nbsb2 {
   bottom: 45px;
 }
 
-
+.home{
+  display: none;
+  z-index: 11;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 40px;
+  width: 40px;
+  opacity: 0.95;
+  &:hover {
+    height: 234px;
+    opacity: 1;
+  }
+}
 
 
 
@@ -884,7 +875,7 @@ nav ul li{
   display: none;
   z-index: 10;
   position: absolute;
-  top: 80px;
+  top: 75px;
   bottom: 0;
   width: 100%;
   background: $quartinarycolor;
@@ -893,7 +884,7 @@ nav ul li{
 #busMenuState{
   z-index: 10;
   position: absolute;
-  top: 80px;
+  top: 75px;
   bottom: 0;
   width: 100%;
 }
@@ -901,7 +892,7 @@ nav ul li{
   display: none;
   z-index: 10;
   position: absolute;
-  top: 80px;
+  top: 75px;
   bottom: 0;
   width: 100%;
 }
@@ -910,7 +901,7 @@ nav ul li{
   display: none;
   z-index: 10;
   position: absolute;
-  top: 80px;
+  top: 75px;
   bottom: 0;
   width: 100%;
 }
@@ -921,7 +912,6 @@ nav ul li{
   color: $secondarycolor;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  border-radius: 2px;
   margin:5px;
   &:hover{
     background: $lightCLR;
@@ -930,12 +920,10 @@ nav ul li{
 
 .deleteBusOption{
   padding: 25px;
-  border: 2px solid $lightCLR;
   cursor: pointer;
   color: $primarycolor;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  border-radius: 2px;
   margin:5px;
   &:hover{
     background: $lightCLR;
