@@ -65,7 +65,7 @@ hr {
   border-radius: 0 !important; }
 
 .dropdown-menu {
-  min-width: 6rem !important; }
+  min-width: 8rem !important; }
 
 /* ==========================================================================
    FUTURE HELP PANEL
@@ -102,18 +102,18 @@ hr {
 
 .navBrand {
   height: 100%;
-  margin-top: 2px;
+  padding-top: 2px;
   text-align: center; }
   .navBrand #homepageLogo {
-    margin-top: 3px;
-    width: 175px; }
+    padding-top: 6px;
+    width: 16rem; }
     @media screen and (min-width: 992px) {
       .navBrand #homepageLogo {
-        width: 200px;
-        margin-top: 0; } }
+        width: 19.4rem;
+        padding-top: .13rem; } }
   .navBrand img {
-    margin-top: 2px;
-    width: 200px; }
+    width: 19.4rem;
+    padding-top: .13rem; }
 
 .currentPageNameNav {
   text-align: right;
@@ -142,11 +142,21 @@ hr {
   border-radius: 2px;
   margin: 20px 20px 75px 20px; }
 
-#headerwrap img {
-  display: block;
-  width: 75%;
-  padding: 45px;
-  margin: auto; }
+#headerwrap {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
+  #headerwrap img {
+    position: absolute;
+    height: 85%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; }
 
 .jumboHeading {
   text-align: center;
@@ -226,35 +236,37 @@ hr {
   display: inline-block;
   width: 100%;
   text-align: right;
-  margin-top: 13px;
-  font-size: 38px;
+  margin-top: 1.75rem;
+  font-size: 32px;
   color: #fff; }
   .signIn:hover, .signIn:active {
     color: #f2f2f2;
     text-decoration: none; }
-  @media screen and (min-width: 992px) {
-    .signIn {
-      margin-top: 11px; } }
 
 .help {
   display: inline-block;
   width: 100%;
   text-align: center;
-  margin-top: 13px;
-  font-size: 38px;
+  margin-top: 1.75rem;
+  font-size: 32px;
   color: #fff; }
   .help:hover, .help:active {
     color: #f2f2f2;
     text-decoration: none; }
-  @media screen and (min-width: 992px) {
-    .help {
-      margin-top: 11px; } }
 
 .amToggle {
   margin-top: 6px;
-  color: #222;
+  background-color: #fff;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  padding: 1.4rem 1rem 0 2rem;
   border: 1px solid #5c40ff;
   height: 50px; }
+
+.adminDropdown {
+  padding: 0;
+  border-radius: 0;
+  margin-top: 1rem; }
 
 .busDropdown {
   padding: 29px 25px !important;
@@ -349,11 +361,11 @@ hr {
 
 #search {
   z-index: 1;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
   height: 50px;
-  padding: 0 15px;
+  padding: 0 20px;
   border: 1px solid #5c40ff; }
   #search:active, #search:focus, #search:hover {
     outline: none;
@@ -365,7 +377,7 @@ hr {
   position: absolute;
   color: #5c40ff;
   top: 0;
-  right: 5px; }
+  right: 7px; }
   .fa-search:hover {
     cursor: pointer; }
 
@@ -402,9 +414,9 @@ hr {
     height: 50px; }
 
 #adminSearch {
-  -webkit-border-radius: 0 3px 3px 0;
-  -moz-border-radius: 0 3px 3px 0;
-  border-radius: 0 3px 3px 0;
+  -webkit-border-radius: 0 25px 25px 0;
+  -moz-border-radius: 0 25px 25px 0;
+  border-radius: 0 25px 25px 0;
   height: 50px;
   padding: 0 15px;
   border: 1px solid #5c40ff; }
@@ -702,6 +714,22 @@ nav ul li {
     height: 234px;
     opacity: 1; }
 
+#landingSearchContainer {
+  width: 85%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
+
+#landingContainer {
+  height: 38%; }
+
+#deleteInput {
+  margin-right: 1rem;
+  margin-left: -.1rem; }
+
 .adminControls {
   z-index: 11;
   position: absolute;
@@ -731,6 +759,30 @@ nav ul li {
   top: 75px;
   bottom: 0;
   width: 100%; }
+
+.deleteBusOption {
+  padding: 25px;
+  cursor: pointer;
+  color: #e74c3c;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  margin: 5px; }
+
+#busEditState {
+  display: none;
+  z-index: 10;
+  position: absolute;
+  top: 75px;
+  bottom: 0;
+  width: 100%; }
+
+.editBusOption {
+  padding: 25px;
+  cursor: pointer;
+  color: #5cb85c;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  margin: 5px; }
 
 #addBusForm {
   display: none;
@@ -770,31 +822,33 @@ nav ul li {
 #footer {
   position: absolute;
   width: 100%;
-  height: 47px;
+  bottom: 0;
+  min-height: 45px;
   z-index: 1;
   background: #fff;
   box-shadow: 0 0 5px #aaa; }
   #footer h6 {
     color: #5c40ff;
-    padding-top: 16px;
+    padding-top: 1.6rem;
     margin: 0;
     text-align: center; }
   #footer ul {
     margin: 0;
-    padding: 9px 0;
+    padding: 1rem 0;
     text-align: center; }
     #footer ul li {
       display: inline-block; }
       #footer ul li a {
         color: #8873ff;
-        font-size: 12px;
-        padding-right: 7px;
-        margin-right: 7px;
+        font-size: 1rem;
+        padding: 0 8px;
         border-right: 1px solid #aaa; }
+        @media screen and (min-width: 992px) {
+          #footer ul li a {
+            font-size: 1.25rem; } }
       #footer ul li #last {
         border: none;
-        margin: 0;
-        padding: 0; }
+        padding-right: 0; }
 
 #footer2 {
   position: absolute;

@@ -107,53 +107,22 @@
                 <p class="alert-warning">* for optimal experience please do not view on mobile devices.</p>
             </div>
 
-            <div class="row text-center pad-top">
+            <% for (var i=0; i < busNumbers.length; i++) { %>
+                <% if (i % 6 == 0) { %>
+                    <% if (i != 0) { %>
+                        </div>
+                    <% } %>
+                    <div class="row text-center pad-top">
+                <% } %>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
+                    <a href="#" onclick="requestDelete(<%= busNumbers[i] %>)">
+                        <div class="deleteBusOption">
+                            <i class="fa fa-bus fa-3x"></i>
+                            <h4>Bus <%= busNumbers[i] %></h4>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- /. ROW  -->
-            <div class="row text-center pad-top">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <div class="deleteBusOption">
-                        <i class="fa fa-bus fa-3x"></i>
-                        <h4>Bus 5</h4>
-                    </div>
-                </div>
-            </div>
+            <% } %>
         </div>
     </ul>
 </div>
@@ -175,6 +144,36 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div id="busEditState">
+    <ul>
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ADMIN / Edit Any Bus</h2>
+                </div>
+            </div>
+            <hr />
+            <% for (var i=0; i < busNumbers.length; i++) { %>
+                <% if (i % 6 == 0) { %>
+                    <% if (i != 0) { %>
+                        </div>
+                    <% } %>
+                    <div class="row text-center pad-top">
+                <% } %>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                    <a href="#" onclick="dotheeditingthing(<%= busNumbers[i] %>)">
+                        <div class="editBusOption">
+                            <i class="fa fa-bus fa-3x"></i>
+                            <h4>Bus <%= busNumbers[i] %></h4>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    </ul>
+</div>
+
 
 <div id="addBusForm">
 
