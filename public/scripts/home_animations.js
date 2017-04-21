@@ -42,36 +42,55 @@ $('document').ready(function() {
     e.preventDefault();
     $('.busMenuDiv').toggle();
   });
-  
-  $('.adminEditSave').click(function(){
-    alert("Would you like to confirm your changes?");
+
+  $('#deleteBusButton').click(function(){
+    $('#busMenuState').hide();
+    $('.nbs').hide();
+    $("#busDeleteState").show();
+    $('.home').show();
   });
-
-  $('#addBusButton').click(function() {
-    if (busFormIsShowing) {
-      busFormIsShowing = false;
-
-      $('#deleteBusButton').toggle(function () {
-        $("#addBusForm").toggle();
-
-        $('#addBusButton').html('<i class="fa fa-plus-circle"></i> Add');
-      })
-    } else if (!busFormIsShowing) {
-      busFormIsShowing = true;
-
-      $('#deleteBusButton').toggle(function () {
-        $("#addBusForm").toggle();
-
-        $('#addBusButton').html('Back');
-      });
-    }
+  $('#editBusButton').click(function(){
+    $('#busMenuState').hide();
+    $('.nbs').hide();
+    $("#busEditState").show();
+    $('.home').show();
+  });
+  $('#addBusButton').click(function(){
+    $('#busMenuState').hide();
+    $('.nbs').hide();
+    $("#addBusForm").show();
+    $('.home').show();
+  });
+  $('#backToAdminHome').click(function(){
+    $('#addBusForm').hide();
+    $('#busDeleteState').hide();
+    $('#busEditState').hide();
+    $('.home').hide();
+    $("#busMenuState").show();
+    $('.nbs').show();
   });
 
   $('.deleteBusOption').hover(function(){
     $( "i", this).toggleClass("fa-bus fa-times-circle");
   }).click(function(e){
     e.preventDefault();
-    $('#deleteModal').modal('toggle');
+    $('#addBusButton').click(function(){
+      $('#busMenuState').hide();
+      $('.nbs').hide();
+      $("#addBusForm").show();
+      $('.home').show();
+    });
+  });
+
+  $('.editBusOption').hover(function(){
+    $( "i", this).toggleClass("fa-bus fa-edit");
+  }).click(function(e){
+    e.preventDefault();
+    $('.editBusOption').click(function(){
+      $('#busEditState').hide();
+      $("#addBusForm").show();
+      $('.home').show();
+    });
   });
 
   $('.navbar-form').click(function(e) {
@@ -81,42 +100,6 @@ $('document').ready(function() {
   $('#modalConfirmation').click(function() {
     $('#infoModal').modal('toggle');
   });
-  
-  // IndexAdmin controls
-
-    $('#deleteBusButton').click(function(){
-        $('#busMenuState').hide();
-        $('.nbs').hide();
-        $("#busDeleteState").show();
-        $('.home').show();
-    });
-    $('#addBusButton').click(function(){
-        $('#busMenuState').hide();
-        $('.nbs').hide();
-        $("#addBusForm").show();
-        $('.home').show();
-    });
-    $('#backToAdminHome').click(function(){
-        $('#addBusForm').hide();
-        $("#busDeleteState").hide()
-        $('.home').hide();
-        $("#busMenuState").show();
-        $('.nbs').show();
-    });
-      $('#editBusButton').click(function(){
-        $('#busMenuState').hide();
-        $("#busDeleteState").hide()
-        $('.nbs').hide();
-        $("#busEditState").show();
-        $('.home').show();
-    });
-
-    // $('.deleteBusOption').hover(function(){
-    //     $( "i", this).toggleClass("fa-bus fa-times-circle");
-    // }).click(function(e){
-    //     e.preventDefault();
-    //     $('#deleteModal').modal('toggle');
-    // });
 
 });
 
