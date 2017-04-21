@@ -8,6 +8,7 @@ Tranzip will move to the Blount County School System after alpha is reached (ver
 2. Open a new terminal and run `node app`
 3. Go to trapp-beta-intjpianist.c9users.io
 4. To run the test suite, open a new terminal and run `mocha`
+5. Lastly, the username is 'tranzip' and the password is 'Ch@ng3M3!'
 
 # To run locally (this project requires a local installation of MongoDB):
 
