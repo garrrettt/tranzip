@@ -253,8 +253,6 @@ $glow: $size * 0.125;
       display: flex;
       -webkit-flex-direction: column;
       flex-direction: column;
-      -webkit-justify-content: flex-end;
-      justify-content: flex-end;
     }
   }
   @media screen and (min-width: $break-medium){
@@ -442,7 +440,7 @@ $glow: $size * 0.125;
   cursor:pointer;
 }
 
-#search_{
+#search{
   z-index: 1;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -994,7 +992,6 @@ nav ul li{
    ========================================================================== */
 
 #footer {
-  position: absolute;
   width: 100%;
   bottom: 0;
   min-height: 45px;

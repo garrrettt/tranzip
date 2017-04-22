@@ -195,9 +195,7 @@ hr {
       display: -webkit-flex;
       display: flex;
       -webkit-flex-direction: column;
-      flex-direction: column;
-      -webkit-justify-content: flex-end;
-      justify-content: flex-end; }
+      flex-direction: column; }
   @media screen and (min-width: 992px) {
     .teamMember {
       display: -webkit-flex;
@@ -359,7 +357,7 @@ hr {
   right: 2%;
   cursor: pointer; }
 
-#search_ {
+#search {
   z-index: 1;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -367,7 +365,7 @@ hr {
   height: 50px;
   padding: 0 20px;
   border: 1px solid #5c40ff; }
-  #search_:active, #search_:focus, #search_:hover {
+  #search:active, #search:focus, #search:hover {
     outline: none;
     box-shadow: 0 1px 7px white; }
 
@@ -820,7 +818,6 @@ nav ul li {
    Footer
    ========================================================================== */
 #footer {
-  position: absolute;
   width: 100%;
   bottom: 0;
   min-height: 45px;

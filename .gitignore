@@ -40,3 +40,6 @@ Thumbs.db
 ###########################
 node_modules/
 .idea/
+
+# SCSS
+*.css.map
