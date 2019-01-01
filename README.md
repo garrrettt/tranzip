@@ -34,3 +34,7 @@ Tranzip will move to the Blount County School System after alpha is reached (ver
 # NOTE:
 
 Data is limited because only 3 buses are entered in the system out of around 70. This means that while the system's accuracy will not be very high in the actual world, all logic will still be functional for future release.
+
+# Update (01/01/19)
+
+I tried to run this again, and one problem I ran into is that I forgot to seed the database by uncommenting the seed command in `./app.js`. Another problem is that the Google Maps API changed. I just now updated my account, and I got a 1 year free trial, but it may not work in the future after my free trial expires.
